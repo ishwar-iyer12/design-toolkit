@@ -33,7 +33,12 @@ Use 3D when depth explains something: layers of a document, the front and back o
 
 - Set `perspective` on the parent, between 800 and 1600px. Lower values distort.
 - Put `transform-style: preserve-3d` on the element whose children sit at different depths.
-- Keep rotation under 25 degrees on any axis while text is meant to be read. Past that, it is decoration and nobody can read it.
+- Be bold with the object, careful with the words. Text a person must read (headline, body, buttons) stays flat and never rotates. Text inside a depicted object, such as the lines of an invoice in the hero, is illustration and may sit at any angle.
+- Rest in depth. When the signature ends, the object holds a pose that still reads as 3D: 15 to 35 degrees on at least two axes, layers visibly separated, shadows under each. If the rest pose is flat, the 3D exists for two seconds of a two-minute visit.
+- Make it big. The signature object fills at least 40% of the hero's width on a desktop screen.
+- Ground it. Give the object a surface to sit on or float above: a cast shadow, a floor line, a faint grid. An object with nothing under it has no depth to read.
+- After it rests, it may breathe: a slow float of a few pixels or a degree or two, with still periods, that stops under reduced motion.
+- Show the readable version too. If the object's contents matter, show them flat and legible elsewhere on the page.
 - Give depth with `translateZ` and with shadow tokens that grow with height. A raised layer with no shadow looks pasted on.
 - Hide the back of anything that flips: `backface-visibility: hidden`.
 - Pointer-driven tilt is capped at 8 degrees, eased, and returns to rest when the pointer leaves. It does nothing on touch screens, so the design cannot depend on it.
@@ -83,6 +88,8 @@ Run this on your own output. A "yes" means rework.
 6. Is anything animating a layout property?
 7. Is there an animation with no reduced-motion rule?
 8. Does everything fade up by 20px on scroll, section after section?
+9. Take a screenshot ten seconds after load. Can you tell from the still that the page has 3D in it? If not, the rest pose is too flat.
+10. Is the signature timid? If someone asked for something striking, would they say this is it?
 
 ## Report
 

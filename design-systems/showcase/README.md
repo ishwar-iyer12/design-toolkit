@@ -18,7 +18,7 @@ So this variant keeps the discipline (five sizes, the 4px grid, counted accents,
 
 **A support colour.** One, used for at most two things, in addition to the accent's three. Change both colours to fit the concept. The defaults are deep green and peach.
 
-**Depth.** Three shadow layers that grow with height, one hard offset shadow to use as a motif, and 3D transforms with the limits in `depth`.
+**Depth.** Three shadow layers that grow with height, one hard offset shadow to use as a motif, and 3D transforms with the limits in `depth`. The signature object is large and rests in a 3D pose. Timid depth is worse than none.
 
 **A signature animation.** One per page, built from the product, up to three beats of 1200ms. Rules are in the `motion` skill.
 
