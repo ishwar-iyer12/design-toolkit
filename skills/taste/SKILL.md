@@ -10,9 +10,10 @@ Apply these rules before you write markup or styles. Then run the smell test on 
 ## Before you start
 
 1. Find the design system. Look for `design-systems/` in the kit this skill came from (two folders above this file). If the project has its own tokens, those win.
-2. Pick one variant and say which: `base`, `editorial` for reading, `dashboard` for dense data, `marketing` for landing pages. Read its README.
+2. Pick one variant and say which: `base`, `editorial` for reading, `dashboard` for dense data, `marketing` for landing pages, `showcase` for a page that has to be remembered. Read its README.
 3. Load its `tokens.json`. Variant values override `base`. Use token names in code, not raw values.
-4. Get real content. Ask for it, or read it from the project. If none exists, write plausible specific content for this product. Never lorem ipsum, never "Feature one".
+4. Have an idea. Write one sentence naming a concept from the product's own world, and let it decide the typeface, the imagery and the wording. Rules make a page tidy. They do not make it worth looking at. A page that passes every rule below and has no idea has failed.
+5. Get real content. Ask for it, or read it from the project. If none exists, write plausible specific content for this product. Never lorem ipsum, never "Feature one".
 
 ## Rules
 
@@ -69,11 +70,13 @@ Run this on your own output. Answer each question honestly. A "yes" means rework
 10. Does any interactive element lack a hover or focus state?
 11. Is the empty state or error state missing?
 12. Could you swap the product name for a competitor's and change nothing else?
+13. Is it tidy and forgettable? Can you name the idea behind it in one sentence?
 
 ## Report
 
-End your response with three lines:
+End your response with four lines:
 
 - Variant: which one you used, and why.
+- Concept: the one sentence behind the page.
 - Accent: the colour and the three things it marks.
 - Smell test: "passed", or which items failed and what you changed.
