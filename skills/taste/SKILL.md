@@ -20,7 +20,8 @@ Apply these rules before you write markup or styles. Then run the smell test on 
 **Colour**
 
 - Pick one accent colour. Use it for at most three things, and name them before you start. Example: primary button, current nav item, links.
-- Everything else is neutral. Status colours (danger, warning, success) are for status only.
+- If the variant has a support colour, use it. It is there for mood, within the count the variant gives. A page that is allowed a second colour and shows only grey has left its best tool in the box.
+- Everything else is neutral, unless the variant says otherwise. Status colours (danger, warning, success) are for status only.
 - The focus ring may use the accent hue and does not count as one of the three. Any other use does, including a border that turns accent on focus.
 - Count the accent uses in your CSS before you report. If the design system's component rules would push you past three, follow this rule and say so.
 - No gradients. No glassmorphism or background blur. No drop shadows. The exception: the variant's `effects` block allows it, and then only where it says.
@@ -29,6 +30,7 @@ Apply these rules before you write markup or styles. Then run the smell test on 
 **Type**
 
 - Five sizes at most: caption, body, lead, title, display. Do not invent a sixth.
+- If the variant lists typeface pairings, choose one. The system font is for app screens, not for pages that have to make an impression.
 - Create hierarchy with size and weight first, then colour. Two weights are usually enough.
 - Never centre body text. Left-align it (or start-align for right-to-left languages). A short headline may be centred.
 - Keep lines of text between 45 and 75 characters.
@@ -54,6 +56,14 @@ Apply these rules before you write markup or styles. Then run the smell test on 
 - Icons must carry meaning the text does not. If removing the icon loses nothing, remove it.
 - Let content set the height. Do not pad or truncate cards to match each other.
 
+## Restraint is not the goal
+
+These rules remove noise so that one idea can be loud. They are not a target to hit by doing less. If you have followed them and the page is quiet, grey and polite, you have not finished. Turn up the things the variant allows: the size of the headline, the support colour, the presence of the product, the motif.
+
+## Look at it
+
+Before you report, render the page and look at a screenshot at desktop and phone width. If you cannot, say so in the report. Do not describe a page you have not seen as finished.
+
 ## Smell test
 
 Run this on your own output. Answer each question honestly. A "yes" means rework, not a note.
@@ -71,6 +81,8 @@ Run this on your own output. Answer each question honestly. A "yes" means rework
 11. Is the empty state or error state missing?
 12. Could you swap the product name for a competitor's and change nothing else?
 13. Is it tidy and forgettable? Can you name the idea behind it in one sentence?
+14. Is the page mostly grey when the variant allows colour?
+15. Is it set in the system font when the variant offers typefaces?
 
 ## Report
 
