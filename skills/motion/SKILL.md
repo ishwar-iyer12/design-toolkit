@@ -41,6 +41,9 @@ Use 3D when depth explains something: layers of a document, the front and back o
 - Show the readable version too. If the object's contents matter, show them flat and legible elsewhere on the page.
 - Give depth with `translateZ` and with shadow tokens that grow with height. A raised layer with no shadow looks pasted on.
 - Hide the back of anything that flips: `backface-visibility: hidden`.
+- Overshoot and spring easing go past the end value before settling. Use them on rotation and scale, where that reads as a bounce. Never use them on movement towards a surface, such as a stamp landing on paper: the object passes through the surface and vanishes for a moment. Never use them on opacity. To land something, use `settle`.
+- Leave a gap. Something resting on a surface sits at least 4px above it in Z. Smaller gaps flicker when anything tilts.
+- Keep parts on their object. A stamp, label or badge stays inside the edges of the thing it is on, unless hanging off is the point.
 - Pointer-driven tilt is capped at 8 degrees, eased, and returns to rest when the pointer leaves. It does nothing on touch screens, so the design cannot depend on it.
 - Prefer CSS transforms. Reach for WebGL or a 3D library only when the product is itself three-dimensional.
 
@@ -76,6 +79,18 @@ Write the reduced-motion rule next to the animation, in the same block. Do not l
 - A loop rests. Build in a still period at least as long as the movement.
 - Nothing flashes more than three times a second.
 
+## Watch it before you report
+
+The last frame tells you nothing about the frames before it. Most animation bugs live in the middle. If you cannot watch the page run, freeze it and look:
+
+1. For each beat of the signature, freeze the animation at 0, 25, 50, 75 and 100 percent. With CSS animations, set `animation-play-state: paused` and a negative `animation-delay` equal to the moment you want. With script-driven motion, add a way to set the clock.
+2. Take a screenshot at each point and look at every one.
+3. Look for these: something that disappears and comes back, something passing through a surface, a part outside its parent, text or parts overlapping, a jump between two frames that should be close.
+4. Do the same for the idle loop at its furthest point, and for the pointer tilt at each corner.
+5. Fix what you find and freeze it again.
+
+If you could not do this, say so in the report in plain words: "I did not see this animation in motion." Do not write "passed".
+
 ## Smell test
 
 Run this on your own output. A "yes" means rework.
@@ -90,6 +105,7 @@ Run this on your own output. A "yes" means rework.
 8. Does everything fade up by 20px on scroll, section after section?
 9. Take a screenshot ten seconds after load. Can you tell from the still that the page has 3D in it? If not, the rest pose is too flat.
 10. Is the signature timid? If someone asked for something striking, would they say this is it?
+11. Did you look at the middle of every beat, or only at the end?
 
 ## Report
 
