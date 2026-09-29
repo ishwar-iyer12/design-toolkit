@@ -33,6 +33,7 @@ If you do not trust scripts, make the links by hand:
 mkdir -p ~/.claude/skills
 ln -s /path/to/design-toolkit/skills/taste ~/.claude/skills/taste
 ln -s /path/to/design-toolkit/skills/image-to-code ~/.claude/skills/image-to-code
+ln -s /path/to/design-toolkit/skills/motion ~/.claude/skills/motion
 ln -s /path/to/design-toolkit/skills/web-design-guidelines ~/.claude/skills/web-design-guidelines
 ln -s /path/to/design-toolkit/skills/awesome-design ~/.claude/skills/awesome-design
 ```
@@ -61,15 +62,16 @@ The agent reports which variant it used, what the accent colour marks, and wheth
 
 ## What it produces
 
-I ran three prompts twice each, once with no skills and once with the kit. These are the results, one run per cell, top of each page.
+I ran four prompts with no skills and with the kit. These are the results, one run per cell, top of each page.
 
 | Prompt | Without the kit | With the kit |
 | --- | --- | --- |
 | Landing page | ![Landing page without the kit](examples/screenshots/1-landing-page-without-kit.png) | ![Landing page with the kit](examples/screenshots/1-landing-page-with-kit.png) |
 | Orders table | ![Orders table without the kit](examples/screenshots/2-orders-table-without-kit.png) | ![Orders table with the kit](examples/screenshots/2-orders-table-with-kit.png) |
 | Match a mockup | ![Mockup match without the kit](examples/screenshots/3-screenshot-without-kit.png) | ![Mockup match with the kit](examples/screenshots/3-screenshot-with-kit.png) |
+| Landing page with 3D | ![Animated page without the kit](examples/screenshots/4-animated-without-kit.gif) | ![Animated page with the kit](examples/screenshots/4-animated-with-kit.gif) |
 
-The pages without the kit are not ugly. The first one is arguably the bolder design. What the kit changes shows up when you count:
+The pages without the kit are not ugly. In the first row the page without the kit is the better looking one, which is why the `showcase` variant and the `motion` skill exist: the last row uses them. Even there, the kit's first attempt was too timid and I had to revise the skill. What the kit changes reliably shows up when you count:
 
 | Measure | Without | With |
 | --- | --- | --- |
@@ -79,8 +81,10 @@ The pages without the kit are not ugly. The first one is arguably the bolder des
 | Orders table: states built (loading, empty, no matches, failed) | 1 of 4 | 4 of 4 |
 | Mockup match: pixels that differ from the source, of 5,184,000 | 4,379,452 | 3 |
 | Mockup match: differences from the source listed in the output | 3 | 18 |
+| 3D page: font sizes | 22 | 5 |
+| 3D page: reduced-motion rules | 2 | 7 |
 
-The code for all six is in `examples/runs/`, with the reply each run gave. `examples/before-after.md` has the full account, including what the kit runs got wrong and the bug they found in the kit.
+The code for every run is in `examples/runs/`, with the reply each run gave. `examples/before-after.md` has the full account, including what the kit got wrong.
 
 ## Skills
 
@@ -88,6 +92,7 @@ The code for all six is in `examples/runs/`, with the reply each run gave. `exam
 | --- | --- |
 | `taste` | Rules the agent applies before writing UI, and a smell test it runs afterwards. |
 | `image-to-code` | Turns a screenshot or mockup into matching code and records every divergence. |
+| `motion` | Rules for animation and 3D: one signature, timing, depth that lasts, reduced motion. |
 | `web-design-guidelines` | Reviews UI code against Vercel's Web Interface Guidelines. Vendored. |
 | `awesome-design` | 74 DESIGN.md references for building in the style of a known product. Vendored. |
 
@@ -101,6 +106,7 @@ Each variant is a `tokens.json` that overrides `base`, plus a README on when to 
 | `editorial` | People will read for more than a minute. Serif pairing, a 66 character measure, a 30px baseline. |
 | `dashboard` | Someone compares many values every day. Dense tables, aligned numbers, chart colour rules. |
 | `marketing` | The page is read once, quickly. Big hierarchy, one accent, wide section rhythm. |
+| `showcase` | The page has to be remembered. A concept, a display typeface, depth, one signature animation. |
 
 Your own tokens always win. If the project already has a design system, tell the agent where it is and keep the rules from `taste`.
 

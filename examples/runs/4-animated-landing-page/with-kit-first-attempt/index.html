@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tally: invoicing for freelance designers</title>
+  <meta name="description" content="Tally builds each invoice from the layers of the job: hours, revision rounds and licence fees. Flatten them into one page and send it.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Work+Sans:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    /* Put the hero invoice in its opening pose before first paint, only when
+       motion is allowed. If the main script never runs, the class is removed
+       after four seconds so the finished invoice is always shown. */
+    (function () {
+      var ok = window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+      if (!ok) { return; }
+      var root = document.documentElement;
+      root.classList.add('will-play');
+      window.__tallyFailSafe = setTimeout(function () { root.classList.remove('will-play'); }, 4000);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top" aria-label="Tally, back to top">Tally</a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a class="nav-item" href="#how">How it works</a></li>
+          <li><a class="nav-item" href="#try">Try it</a></li>
+          <li><a class="nav-item" href="#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <a class="button button--secondary" href="#start">Start free</a>
+    </div>
+  </header>
+
+  <main id="content">
+
+    <!-- Hero -->
+    <section class="hero wrap" id="top">
+      <div class="hero-copy">
+        <p class="tag">Invoicing for freelance designers</p>
+        <h1 class="display">The last artboard is the invoice.</h1>
+        <p class="lead measure">Tally builds every invoice from the layers of the job: studio hours, revision rounds, licence fees. Flatten them into one page and send it while the client still remembers how much they liked the work.</p>
+        <div class="actions">
+          <a class="button button--primary button--large" href="#start">Start my first invoice</a>
+          <a class="link" href="#how">See how the layers work</a>
+        </div>
+        <p class="caption muted">Free for three invoices a month. No card needed.</p>
+      </div>
+
+      <figure class="hero-figure">
+        <div class="scene" id="scene">
+          <div class="tilt">
+            <div class="stack">
+              <div class="sheet">
+                <div class="sheet-head">
+                  <div>
+                    <p class="sheet-title">Invoice 0042</p>
+                    <p class="caption muted">Ines Varga Studio to Fernhill Pottery</p>
+                  </div>
+                  <span class="tag layer-tag">Layer 01</span>
+                </div>
+
+                <div class="slot">
+                  <div class="layer layer--work">
+                    <div class="layer-head">
+                      <p class="caption strong">Work</p>
+                      <span class="tag layer-tag">Layer 02</span>
+                    </div>
+                    <table class="lines">
+                      <tbody>
+                        <tr><th scope="row">Brand identity, 32 hours</th><td>£2,080</td></tr>
+                        <tr><th scope="row">Revision round 3, 6 hours</th><td>£390</td></tr>
+                        <tr><th scope="row">Licence, worldwide, 2 years</th><td>£600</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="slot">
+                  <div class="layer layer--total">
+                    <div class="layer-head">
+                      <p class="caption strong">Total due</p>
+                      <span class="tag layer-tag">Layer 03</span>
+                    </div>
+                    <p class="total-figure">£3,070</p>
+                  </div>
+                </div>
+
+                <p class="sheet-foot caption muted">Sent 29 September 2026. Due 13 October 2026.</p>
+
+                <div class="stamp">
+                  <span class="stamp-word">Paid</span>
+                  <span class="caption">8 Oct 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="scene-controls">
+          <button class="button button--secondary" type="button" id="toggle-layers" aria-pressed="false" hidden>Pull the layers apart</button>
+          <button class="button button--quiet" type="button" id="replay" hidden>Replay from the start</button>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- How it works -->
+    <section class="section wrap split" id="how">
+      <div class="split-head">
+        <p class="tag">How it works</p>
+        <h2 class="title">Work in layers. Bill on one page.</h2>
+        <p class="measure">You already think this way. A project file is a stack of layers, and so is the money you are owed for it.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-number" aria-hidden="true">01</span>
+          <div>
+            <h3 class="lead strong">Log the work as layers</h3>
+            <p>Each kind of work gets its own layer: studio hours, revision rounds, licences, expenses. Log them as the job runs, from the timer or by hand, so nothing has to be rebuilt from your calendar in week six.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-number" aria-hidden="true">02</span>
+          <div>
+            <h3 class="lead strong">Flatten when the job ships</h3>
+            <p>Pick the layers that belong on this invoice. Tally merges them into line items, subtracts the deposit, works out the tax and numbers the page in sequence.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-number" aria-hidden="true">03</span>
+          <div>
+            <h3 class="lead strong">Send it, and let Tally chase</h3>
+            <p>The client gets a link and a PDF. If the due date passes, Tally sends a polite reminder on day 1, day 7 and day 14. You do not have to write the awkward email.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Try it -->
+    <section class="section wrap" id="try">
+      <div class="section-head">
+        <p class="tag">Try it</p>
+        <h2 class="title">Turn a layer off. Watch the total follow.</h2>
+        <p class="measure">This is invoice 0042 from the top of the page, before it was flattened. Every layer is a decision you can still change.</p>
+      </div>
+
+      <div class="builder">
+        <fieldset class="panel">
+          <legend class="caption strong">Layers on this invoice</legend>
+          <noscript><p class="caption muted">The switches need JavaScript. The invoice beside them shows the three layers that were billed.</p></noscript>
+
+          <label class="layer-row">
+            <input type="checkbox" data-layer="hours" checked>
+            <span class="layer-row-text">
+              <span class="strong">Studio hours</span>
+              <span class="caption muted">32 hours at £65</span>
+            </span>
+            <span class="figure">£2,080</span>
+          </label>
+          <label class="layer-row">
+            <input type="checkbox" data-layer="revisions" checked>
+            <span class="layer-row-text">
+              <span class="strong">Revision round 3</span>
+              <span class="caption muted">The quote included two rounds</span>
+            </span>
+            <span class="figure">£390</span>
+          </label>
+          <label class="layer-row">
+            <input type="checkbox" data-layer="licence" checked>
+            <span class="layer-row-text">
+              <span class="strong">Licence</span>
+              <span class="caption muted">Worldwide, all media, 2 years</span>
+            </span>
+            <span class="figure">£600</span>
+          </label>
+          <label class="layer-row">
+            <input type="checkbox" data-layer="rush" >
+            <span class="layer-row-text">
+              <span class="strong">Rush delivery</span>
+              <span class="caption muted">Delivered in 5 working days</span>
+            </span>
+            <span class="figure">£300</span>
+          </label>
+        </fieldset>
+
+        <div class="preview" aria-label="Invoice preview">
+          <div class="preview-head">
+            <p class="lead strong">Invoice 0042</p>
+            <p class="caption muted">Ines Varga Studio to Fernhill Pottery</p>
+          </div>
+
+          <div id="preview-filled">
+            <table class="lines lines--roomy">
+              <thead>
+                <tr><th scope="col">Item</th><th scope="col" class="num">Amount</th></tr>
+              </thead>
+              <tbody>
+                <tr data-line="hours" data-amount="2080"><th scope="row">Brand identity, 32 hours at £65</th><td>£2,080</td></tr>
+                <tr data-line="revisions" data-amount="390"><th scope="row">Revision round 3, 6 hours at £65</th><td>£390</td></tr>
+                <tr data-line="licence" data-amount="600"><th scope="row">Licence, worldwide, all media, 2 years</th><td>£600</td></tr>
+                <tr data-line="rush" data-amount="300" hidden><th scope="row">Rush delivery, 5 working days</th><td>£300</td></tr>
+              </tbody>
+            </table>
+            <div class="preview-total" aria-live="polite">
+              <span class="strong">Total due</span>
+              <span class="total-figure" id="preview-total">£3,070</span>
+            </div>
+          </div>
+
+          <div class="empty" id="preview-empty" hidden>
+            <p class="strong">This invoice has no layers on it.</p>
+            <p>Line items appear here when you turn a layer on in the panel. Start with the hours, which most invoices need.</p>
+            <button class="button button--secondary" type="button" id="empty-action">Turn on studio hours</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is on the page -->
+    <section class="section wrap split" id="details">
+      <div class="split-head">
+        <p class="tag">Built for design work</p>
+        <h2 class="title">The lines other invoicing tools leave out.</h2>
+      </div>
+      <dl class="spec">
+        <div class="spec-row">
+          <dt class="strong">Revision rounds</dt>
+          <dd>Say how many rounds the quote includes. The round after that becomes its own line at your hourly rate, with the date the client asked for it.</dd>
+        </div>
+        <div class="spec-row">
+          <dt class="strong">Licence and usage</dt>
+          <dd>Territory, term and media sit on the invoice as a priced line, not in an email thread nobody can find a year later.</dd>
+        </div>
+        <div class="spec-row">
+          <dt class="strong">Deposits</dt>
+          <dd>Bill half before you open a file. The final invoice subtracts it.</dd>
+        </div>
+        <div class="spec-row">
+          <dt class="strong">Kill fees</dt>
+          <dd>When a job is cancelled, Tally flattens the work done so far and adds the fee from your contract.</dd>
+        </div>
+        <div class="spec-row">
+          <dt class="strong">Your own page</dt>
+          <dd>Set the invoice in your typeface, with your mark and your grid. It is the last thing the client sees from you, so it should look like you made it.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section wrap" id="pricing">
+      <div class="section-head">
+        <p class="tag">Pricing</p>
+        <h2 class="title">Two plans. Both send invoices.</h2>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3 class="lead strong">Solo</h3>
+          <p class="plan-price"><span class="title">£0</span></p>
+          <p>For the months when you bill a client or two.</p>
+          <ul class="plan-list">
+            <li>Three invoices a month</li>
+            <li>Every kind of layer</li>
+            <li>PDF and a link for the client</li>
+          </ul>
+          <a class="button button--secondary" href="#start">Start on Solo</a>
+        </div>
+        <div class="plan plan--raised">
+          <h3 class="lead strong">Studio</h3>
+          <p class="plan-price"><span class="title">£9</span> <span class="muted">a month</span></p>
+          <p>For a full client list, and for anyone tired of chasing payment.</p>
+          <ul class="plan-list">
+            <li>As many invoices as you send</li>
+            <li>Reminders on day 1, day 7 and day 14</li>
+            <li>Your typeface, mark and grid on the page</li>
+            <li>Card and bank payment from the invoice link</li>
+            <li>Deposits and kill fees</li>
+          </ul>
+          <a class="button button--secondary" href="#start">Start on Studio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sign up -->
+    <section class="section wrap split" id="start">
+      <div class="split-head">
+        <p class="tag">Start</p>
+        <h2 class="title">Send the first one today.</h2>
+        <p class="measure">Give us an address and we will send a sign-in link. Your first invoice takes about four minutes, most of it spent choosing a typeface.</p>
+      </div>
+
+      <form class="signup" id="signup" novalidate>
+        <div class="field">
+          <label for="email" class="strong">Work email</label>
+          <input class="input" type="email" id="email" name="email" autocomplete="email" aria-describedby="email-help" required>
+          <p class="caption muted" id="email-help">We send one sign-in link. There is no password to remember.</p>
+          <p class="caption error" id="email-error" hidden></p>
+        </div>
+        <button class="button button--primary button--large" type="submit" id="signup-button">
+          <span class="spinner" aria-hidden="true" hidden></span>
+          <span id="signup-label">Create my account</span>
+        </button>
+        <p class="notice" id="signup-status" role="status" hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p class="caption muted">Tally. Invoicing for people who bill by the project.</p>
+      <a class="link caption" href="#top">Back to the top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

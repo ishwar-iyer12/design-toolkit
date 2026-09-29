@@ -1,8 +1,8 @@
 # Before and after
 
-Three prompts, each run twice in Claude Code on 29 September 2026: once with no skills loaded, once with the kit. Same model, same machine, fresh session for every run, no follow-up questions allowed. What follows is a written description of what came back, with numbers counted from the output files.
+Four prompts, each run in Claude Code on 29 September 2026: once with no skills loaded, once with the kit. Same model, same machine, fresh session for every run, no follow-up questions allowed. What follows is a written description of what came back, with numbers counted from the output files.
 
-One run per cell is a small sample. Treat this as a record of six runs, not as a benchmark.
+One run per cell is a small sample. Treat this as a record of nine runs, not as a benchmark.
 
 I expected the runs without the kit to be bad. They were not. They were inventive and mostly honest about their gaps. What the kit changed was discipline: fewer sizes, a real grid, no effects, stated divergences. It also exposed a bug in the kit, which is at the end.
 
@@ -133,10 +133,62 @@ It kept the typo and flagged it. It kept the text boxes as text boxes, because t
 
 A caveat: my mockup used Georgia, which is installed on this machine. A mockup in a proprietary typeface would not match this closely.
 
+## 4. A landing page with 3D
+
+After the first three, the verdict on prompt 1 was plain: the page without the kit looked better. The kit had rules for taking things away and none for having an idea, and it said nothing about motion. So I added a concept step to `taste`, a `motion` skill and a `showcase` variant, and ran a fourth prompt.
+
+The recordings are GIFs in `examples/screenshots/`. Each was captured with the same script: four and a half seconds to let the opening play, a sweep of the pointer, then a scroll.
+
+**Without the kit**
+
+```text
+Build a landing page for Tally, an invoicing tool for freelance designers. Give it a cool 3D animation.
+```
+
+![Without the kit](screenshots/4-animated-without-kit.gif)
+
+An isometric invoice built from CSS transforms. Its parts assemble on load, a Paid stamp lands, it sways, tilts with the pointer, and its layers separate on scroll. The headline is "Get paid for all of the work." Further down there is a calculator with three sliders.
+
+It looks good. The invoice text sits at a steep angle and is hard to read, and there is no flat copy of it anywhere. 22 font sizes, 11 spacing values off the grid, 4 gradients, 2 reduced-motion rules. The run said it had not watched its own animation.
+
+**With the kit, first attempt**
+
+```text
+Use the taste and motion skills with the showcase variant. Build a landing page for Tally, an invoicing tool for freelance designers. Give it a cool 3D animation.
+```
+
+![With the kit, first attempt](screenshots/4-animated-with-kit-first-attempt.gif)
+
+The concept was sharper: "The last artboard is the invoice." The invoice's layers are dealt in, flatten into one sheet, and a stamp lands. There is a button to pull the layers apart, a replay button, and a live invoice builder with an empty state.
+
+And the 3D was gone after two seconds. The invoice came to rest flat, facing the reader. I asked for a cool 3D animation and got a polite one. The page without the kit won again.
+
+The cause was my skill. It capped rotation at 25 degrees for anything with text on it, and it said nothing about how the object should rest. The agent followed the rules and flattened the invoice.
+
+**With the kit, second attempt**
+
+I changed the skill: the rotation limit applies to text a person has to read, not to a depicted object. The object must rest in a pose that still reads as 3D, fill at least 40% of the hero, and sit on something. Then I ran the same prompt again, word for word.
+
+![With the kit, second attempt](screenshots/4-animated-with-kit.gif)
+
+A carbon-copy invoice pad on a cutting mat. The pad drops, is dealt into three sheets at three heights (top copy, pink carbon copy, ledger sheet), and a stamp lands. It rests at 35 degrees on one axis and 25 on another, then floats slowly with still periods. There are buttons to replay it and to pause the float. Further down, the top copy is laid flat, readable and editable.
+
+5 font sizes, no spacing off the grid, no gradients, 7 reduced-motion rules. States for the builder and the form: empty, field error, loading, done, offline.
+
+What it got wrong: the stamp hangs over the corner of the sheet, the section links in the nav disappear below 960px, and the opening cannot be skipped. It listed all three itself. Like the others, it never watched its animation run.
+
+**Which is better**
+
+On looks, I would call the second attempt and the page without the kit about even, and people will disagree. The kit's page is calmer and its object is readable. The other is punchier and has more colour.
+
+On everything you can count, the kit's page is ahead. But be fair about how it got there: the second attempt came after I had seen the other page and rewritten the skill. The new rules are general, and one prompt cannot show that they hold for other products.
+
 ## What the runs found wrong with the kit
+
+Three things. The first attempt at 3D, above, was one. The plain landing page in prompt 1 was another, and the `showcase` variant is the answer to it. The third was a contradiction between two files:
 
 `components.md` told the agent to turn an input border accent on focus. With a primary button, links and a current nav item, that is a fourth use of the accent, and the taste skill allows three. One run followed the component rule and miscounted. The other caught it.
 
 I fixed it after these runs. The input border now moves to the text colour on focus. `components.md` names the three default jobs for the accent, and the taste skill says the focus ring is not counted and tells the agent to count before it reports.
 
-The runs above used the kit as it was before that fix.
+Prompts 1 to 3 used the kit as it was before that fix. Prompt 4 used it after.

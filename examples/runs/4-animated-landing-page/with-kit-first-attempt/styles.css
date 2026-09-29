@@ -1,0 +1,836 @@
+/* Tally landing page.
+   Tokens: design-systems/base, overridden by design-systems/showcase.
+   Accent (selection blue) marks three things: the primary button, links,
+   and the mark on a layer that is switched on.
+   Support (stamp ink) marks two things: the Paid stamp, and the hard offset
+   shadow under a sheet. */
+
+:root {
+  /* colour: neutral (base) */
+  --color-neutral-0: #ffffff;
+  --color-neutral-100: #f4f4f2;
+  --color-neutral-200: #e6e5e2;
+  --color-neutral-400: #a3a29c;
+  --color-neutral-500: #76756f;
+  --color-neutral-600: #5c5b56;
+  --color-neutral-700: #43423e;
+  --color-neutral-900: #1a1a18;
+
+  /* colour: accent, changed from the showcase default to fit the concept.
+     It is the blue a design tool uses for the selected layer.
+     White on 600 is 8.8:1. 600 on the page colour is 8.3:1. */
+  --color-accent-50: #eef1fb;
+  --color-accent-600: #1f3fae;
+  --color-accent-700: #18328c;
+  --color-accent-800: #11256a;
+
+  /* colour: support (showcase default, reads as stamp ink) */
+  --color-support-100: #fde6dc;
+  --color-support-300: #f4b8a0;
+  --color-support-600: #8f3b1b;
+
+  /* colour: status */
+  --color-danger-600: #b3261e;
+
+  /* colour: roles */
+  --color-role-page: #faf8f4;
+  --color-role-surface: var(--color-neutral-0);
+  --color-role-surface-sunken: var(--color-neutral-100);
+  --color-role-border: var(--color-neutral-200);
+  --color-role-border-strong: var(--color-neutral-500);
+  --color-role-text: var(--color-neutral-900);
+  --color-role-text-muted: var(--color-neutral-600);
+  --color-role-text-disabled: var(--color-neutral-400);
+  --color-role-text-on-accent: var(--color-neutral-0);
+  --color-role-accent: var(--color-accent-600);
+  --color-role-accent-hover: var(--color-accent-700);
+  --color-role-accent-pressed: var(--color-accent-800);
+  --color-role-focus-ring: var(--color-accent-600);
+  --color-role-support-fill: var(--color-support-300);
+  --color-role-support-text: var(--color-support-600);
+
+  /* type: showcase pairing 1, "sturdy, plain-spoken, good for tools and trades" */
+  --font-family-display: 'Archivo', system-ui, sans-serif;
+  --font-family-body: 'Work Sans', system-ui, sans-serif;
+  --font-family-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  --font-size-caption: 14px;
+  --font-size-body: 18px;
+  --font-size-lead: 22px;
+  --font-size-title: 40px;
+  --font-size-display: 88px;
+
+  --font-line-height-caption: 20px;
+  --font-line-height-body: 28px;
+  --font-line-height-lead: 32px;
+  --font-line-height-title: 44px;
+  --font-line-height-display: 88px;
+
+  --font-letter-spacing-display: -0.03em;
+  --font-letter-spacing-title: -0.02em;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-display: 800;
+
+  /* space */
+  --space-hair: 4px;
+  --space-tight: 8px;
+  --space-snug: 12px;
+  --space-base: 16px;
+  --space-roomy: 24px;
+  --space-wide: 32px;
+  --space-section: 48px;
+  --space-block: 64px;
+  --space-page: 96px;
+  --section-gap: 128px;
+
+  /* radius */
+  --radius-small: 2px;
+  --radius-medium: 6px;
+  --radius-large: 10px;
+
+  /* size */
+  --size-control-medium: 44px;
+  --size-control-large: 52px;
+  --size-nav: 56px;
+  --size-content-max: 1200px;
+  --size-measure: 60ch;
+  --size-focus-ring-width: 2px;
+  --size-focus-ring-offset: 2px;
+
+  /* depth */
+  --depth-perspective: 1200px;
+  --depth-layer-rest: 0px;
+  /* Not a height. Flat layers share a plane with the sheet, and browsers
+     sort coplanar 3D faces unreliably, so each rests 1px above the last. */
+  --depth-layer-seat: 1px;
+  --depth-layer-seat-top: 2px;
+  --depth-layer-mid: 48px;
+  --depth-layer-high: 96px;
+
+  /* shadow */
+  --shadow-low: 0 1px 2px rgba(14, 14, 13, 0.08), 0 4px 8px rgba(14, 14, 13, 0.06);
+  --shadow-mid: 0 2px 4px rgba(14, 14, 13, 0.08), 0 12px 24px rgba(14, 14, 13, 0.10);
+  --shadow-high: 0 4px 8px rgba(14, 14, 13, 0.08), 0 32px 64px rgba(14, 14, 13, 0.16);
+  --shadow-hard: 8px 8px 0 var(--color-role-support-fill);
+
+  /* motion */
+  --motion-duration-fast: 100ms;
+  --motion-duration-base: 160ms;
+  --motion-duration-slow: 240ms;
+  --motion-duration-beat: 600ms;
+  --motion-duration-scene: 1200ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+  --motion-easing-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-stagger: 60ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --font-size-display: 48px;          /* font.display-small-screen */
+    --font-line-height-display: 48px;
+    --section-gap: 64px;                /* section.gap-small-screen */
+  }
+}
+
+/* Whispers become instant. The signature has its own rules further down. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background: var(--color-role-page);
+  color: var(--color-role-text);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--font-line-height-body);
+  font-weight: var(--font-weight-regular);
+  overflow-x: clip;
+}
+
+h1, h2, h3, p, ul, ol, dl, dd, figure, fieldset, table { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+fieldset { border: 0; min-width: 0; }
+[hidden] { display: none !important; }
+
+.wrap {
+  max-width: var(--size-content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-roomy);
+}
+
+.measure { max-width: var(--size-measure); }
+.muted { color: var(--color-role-text-muted); }
+.strong { font-weight: var(--font-weight-medium); }
+
+.caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-caption);
+}
+
+.lead {
+  font-size: var(--font-size-lead);
+  line-height: var(--font-line-height-lead);
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title);
+  line-height: var(--font-line-height-title);
+  letter-spacing: var(--font-letter-spacing-title);
+  font-weight: var(--font-weight-display);
+}
+
+.display {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  line-height: var(--font-line-height-display);
+  letter-spacing: var(--font-letter-spacing-display);
+  font-weight: var(--font-weight-display);
+}
+
+.figure, .total-figure, .lines td {
+  font-family: var(--font-family-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The layer tag. The recurring motif: every part of the page is named the
+   way a layer is named in a design file. Neutral, not accent. */
+.tag {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-caption);
+  color: var(--color-role-text-muted);
+  border: 1px solid var(--color-role-border-strong);
+  border-radius: var(--radius-small);
+  padding: var(--space-hair) var(--space-tight);
+}
+
+/* ---------- Focus, links ---------- */
+
+:focus-visible {
+  outline: var(--size-focus-ring-width) solid var(--color-role-focus-ring);
+  outline-offset: var(--size-focus-ring-offset);
+}
+
+/* Accent use 2 of 3: links. */
+.link {
+  color: var(--color-role-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+.link:hover { color: var(--color-role-accent-hover); text-decoration-thickness: 2px; }
+.link:active { color: var(--color-role-accent-pressed); }
+
+.skip-link {
+  position: absolute;
+  left: var(--space-base);
+  top: var(--space-base);
+  z-index: 10;
+  padding: var(--space-tight) var(--space-base);
+  background: var(--color-role-surface);
+  color: var(--color-role-text);
+  border: 1px solid var(--color-role-border-strong);
+  border-radius: var(--radius-medium);
+  transform: translateY(-96px);
+}
+.skip-link:focus { transform: none; }
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-tight);
+  min-height: var(--size-control-medium);
+  padding: 0 var(--space-base);
+  border: 1px solid transparent;
+  border-radius: var(--radius-medium);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-easing-standard),
+    border-color var(--motion-duration-fast) var(--motion-easing-standard),
+    color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+.button--large {
+  min-height: var(--size-control-large);
+  padding: 0 var(--space-roomy);
+}
+
+/* Accent use 1 of 3: the primary button. */
+.button--primary {
+  background: var(--color-role-accent);
+  color: var(--color-role-text-on-accent);
+}
+.button--primary:hover { background: var(--color-role-accent-hover); }
+.button--primary:active { background: var(--color-role-accent-pressed); }
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-role-text);
+  border-color: var(--color-role-border-strong);
+}
+.button--quiet {
+  background: transparent;
+  color: var(--color-role-text);
+}
+.button--secondary:hover, .button--quiet:hover { background: var(--color-role-surface-sunken); }
+.button--secondary:active, .button--quiet:active { background: var(--color-role-border); }
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  background: var(--color-role-surface-sunken);
+  color: var(--color-role-text-disabled);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+/* Loading keeps the label and the accent fill; clicks are ignored in script. */
+.button--primary[aria-busy="true"] { cursor: progress; }
+
+.spinner {
+  width: var(--space-base);
+  height: var(--space-base);
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+/* Reduced motion: a spinner may keep turning, it shows that work is
+   happening (design-systems/base/accessibility.md). It is on screen for
+   under a second. */
+
+/* ---------- Nav ---------- */
+
+.nav { border-bottom: 1px solid var(--color-role-border); }
+.nav-inner {
+  min-height: var(--size-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-roomy);
+  padding-block: var(--space-tight);
+}
+.logo {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-display);
+  font-size: var(--font-size-lead);
+  line-height: var(--font-line-height-lead);
+  letter-spacing: var(--font-letter-spacing-title);
+  color: var(--color-role-text);
+  text-decoration: none;
+  min-height: var(--size-control-medium);
+  display: inline-flex;
+  align-items: center;
+}
+.logo:hover { color: var(--color-role-text-muted); }
+
+.nav-list { display: flex; gap: var(--space-tight); }
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-control-medium);
+  padding: var(--space-tight) var(--space-snug);
+  color: var(--color-role-text-muted);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border-radius: var(--radius-medium);
+  transition: color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+.nav-item:hover { color: var(--color-role-text); text-decoration: underline; text-underline-offset: 4px; }
+.nav-item:active { color: var(--color-role-text); }
+
+@media (max-width: 720px) {
+  .nav-list { display: none; }   /* three in-page anchors; the page is one scroll */
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-block);
+  align-items: center;
+  padding-block: var(--space-page);
+}
+.hero-copy { display: grid; gap: var(--space-roomy); justify-items: start; }
+.hero-copy .display { max-width: 12ch; }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-roomy);
+  margin-top: var(--space-tight);
+}
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-block); }
+}
+
+/* ---------- Signature: the invoice comes apart into layers ----------
+   What it is for: it shows how the product works. An invoice is a stack of
+   layers (page, work, total, payment) that flatten into one sheet.
+   Still frame: the flat, stamped invoice. That is the default CSS below and
+   what is shown with no JavaScript. */
+
+.hero-figure { display: grid; gap: var(--space-wide); justify-items: center; }
+
+.scene {
+  perspective: var(--depth-perspective);
+  width: 100%;
+  max-width: 416px;
+  --signature-duration: var(--motion-duration-beat);
+}
+.scene[data-beat="2"] { --signature-duration: var(--motion-duration-scene); }
+
+/* Pointer tilt, capped at 8deg in script. Eased, returns to rest on leave. */
+.tilt {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform var(--motion-duration-slow) var(--motion-easing-standard);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tilt { transform: none; transition: none; }     /* tilt is off */
+}
+
+/* Rotation stays under 25deg with text on it: 16deg here plus 8deg of tilt. */
+.stack {
+  transform-style: preserve-3d;
+  transform: rotateX(2deg) rotateY(-6deg);
+  transition: transform var(--signature-duration) var(--motion-easing-standard);
+}
+.scene[data-state="apart"] .stack,
+.will-play .stack,
+.scene.is-predeal .stack {
+  transform: rotateX(14deg) rotateY(-16deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .stack { transition: none; }                     /* states swap instantly */
+}
+
+.sheet {
+  position: relative;
+  transform-style: preserve-3d;
+  display: grid;
+  gap: var(--space-base);
+  padding: var(--space-roomy);
+  background: var(--color-role-surface);
+  border: 1px solid var(--color-role-border);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-low);                   /* the sheet lies on the page */
+}
+.sheet-head, .layer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-base);
+}
+.sheet-title {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-display);
+  font-size: var(--font-size-lead);
+  line-height: var(--font-line-height-lead);
+  letter-spacing: var(--font-letter-spacing-title);
+}
+.sheet-foot { padding-right: var(--space-page); padding-bottom: var(--space-wide); }
+
+/* The slot is the hole a layer leaves in the sheet when it is lifted. */
+.slot {
+  transform-style: preserve-3d;
+  background: var(--color-role-surface-sunken);
+  border-radius: var(--radius-small);
+}
+
+.layer {
+  position: relative;
+  display: grid;
+  gap: var(--space-tight);
+  padding: var(--space-base);
+  background: var(--color-role-surface);
+  border: 1px solid var(--color-role-border);
+  border-radius: var(--radius-small);
+  backface-visibility: hidden;
+  transform: translateZ(var(--depth-layer-seat));
+  transition:
+    transform var(--signature-duration) var(--motion-easing-standard),
+    opacity var(--signature-duration) var(--motion-easing-standard);
+}
+/* The shadow is never animated. A pseudo-element that already has it is
+   cross-faded, and it grows with the height of the layer. */
+.layer::before, .stamp::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--signature-duration) var(--motion-easing-standard);
+}
+.layer--work::before { box-shadow: var(--shadow-mid); }
+.layer--total::before, .stamp::before { box-shadow: var(--shadow-high); }
+
+.layer-tag {
+  opacity: 0;
+  transition: opacity var(--motion-duration-slow) var(--motion-easing-standard);
+}
+
+.total-figure {
+  font-size: var(--font-size-lead);
+  line-height: var(--font-line-height-lead);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Support use 1 of 2: the Paid stamp. */
+.stamp {
+  position: absolute;
+  right: var(--space-roomy);
+  bottom: var(--space-base);
+  display: grid;
+  justify-items: center;
+  padding: var(--space-tight) var(--space-base);
+  background: var(--color-support-100);
+  color: var(--color-role-support-text);
+  border: 2px solid var(--color-role-support-text);
+  border-radius: var(--radius-medium);
+  backface-visibility: hidden;
+  transform: translateZ(var(--depth-layer-seat-top)) rotate(-8deg);
+  transition:
+    transform var(--signature-duration) var(--motion-easing-settle),
+    opacity var(--motion-duration-slow) var(--motion-easing-standard);
+}
+.stamp-word {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-display);
+  font-size: var(--font-size-lead);
+  line-height: var(--font-line-height-lead);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* State: apart. Each layer sits at its own height. */
+.scene[data-state="apart"] .layer--work { transform: translateZ(var(--depth-layer-mid)); }
+.scene[data-state="apart"] .layer--total { transform: translateZ(var(--depth-layer-high)); }
+.scene[data-state="apart"] .stamp {
+  transform: translateZ(calc(var(--depth-layer-high) + var(--depth-layer-mid))) rotate(-8deg);
+}
+.scene[data-state="apart"] .layer::before,
+.scene[data-state="apart"] .stamp::before,
+.scene[data-state="apart"] .layer-tag { opacity: 1; }
+
+/* State: stamp not yet applied (beats 1 and 2). It enters, so it eases out. */
+.scene[data-stamp="off"] .stamp,
+.will-play .stamp,
+.scene.is-predeal .stamp {
+  opacity: 0;
+  transform: translateZ(var(--depth-layer-high)) rotate(-8deg) scale(1.25);
+}
+
+/* Beat 1 start: the layers wait above their places, unseen. No transition
+   into this pose, only out of it. */
+.will-play .layer--work,
+.scene.is-predeal .layer--work {
+  opacity: 0;
+  transform: translateZ(var(--depth-layer-high));
+}
+.will-play .layer--total,
+.scene.is-predeal .layer--total {
+  opacity: 0;
+  transform: translateZ(calc(var(--depth-layer-high) + var(--depth-layer-mid)));
+}
+.will-play .stack, .will-play .layer, .will-play .stamp, .will-play .layer::before,
+.scene.is-predeal .stack, .scene.is-predeal .layer, .scene.is-predeal .stamp, .scene.is-predeal .layer::before {
+  transition: none;
+}
+
+/* Beat 1: the layers are dealt in, 60ms apart. They enter, so they ease out. */
+.scene[data-beat="1"] .layer { transition-timing-function: var(--motion-easing-settle); }
+.scene[data-beat="1"] .layer--total,
+.scene[data-beat="1"] .layer--total::before { transition-delay: var(--motion-stagger); }
+
+/* will-change is added by script just before a move and removed after it. */
+.scene.is-moving .stack,
+.scene.is-moving .layer,
+.scene.is-moving .stamp { will-change: transform, opacity; }
+
+/* Reduced motion: the invoice is shown flat and stamped. The button still
+   swaps between flat and apart, with no movement. Replay is not offered. */
+@media (prefers-reduced-motion: reduce) {
+  .layer, .layer::before, .layer-tag, .stamp, .stamp::before { transition: none; }
+  .scene[data-beat] .layer--total,
+  .scene[data-beat] .layer--total::before { transition-delay: 0ms; }
+  #replay { display: none; }
+}
+
+.scene-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-snug);
+}
+
+/* ---------- Invoice lines ---------- */
+
+.lines {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-caption);
+}
+.lines th, .lines td {
+  padding: var(--space-tight) 0;
+  border-top: 1px solid var(--color-role-border);
+  font-weight: var(--font-weight-regular);
+  text-align: left;
+  vertical-align: top;
+}
+.lines td, .lines .num { text-align: right; padding-left: var(--space-base); white-space: nowrap; }
+.lines thead th {
+  border-top: 0;
+  border-bottom: 1px solid var(--color-role-border-strong);
+  color: var(--color-role-text-muted);
+  font-weight: var(--font-weight-medium);
+}
+.lines thead + tbody tr:first-child th,
+.lines thead + tbody tr:first-child td { border-top: 0; }
+.lines--roomy { font-size: var(--font-size-body); line-height: var(--font-line-height-body); }
+.lines--roomy th, .lines--roomy td { padding: var(--space-snug) 0; }
+.lines--roomy thead th { font-size: var(--font-size-caption); line-height: var(--font-line-height-caption); }
+.lines--roomy td { padding-left: var(--space-base); }
+
+/* A line that comes back fades in. A whisper. */
+.lines tr.is-new { animation: appear var(--motion-duration-base) var(--motion-easing-settle); }
+@keyframes appear { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .lines tr.is-new { animation: none; }
+}
+
+/* ---------- Sections ---------- */
+
+.section { padding-bottom: var(--section-gap); }
+.hero + .section { padding-top: var(--space-block); }
+
+.section-head, .split-head { display: grid; gap: var(--space-base); justify-items: start; align-content: start; }
+.section-head { margin-bottom: var(--space-section); }
+.section-head .title, .split-head .title { max-width: 18ch; }
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-block);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .split { grid-template-columns: minmax(0, 1fr); gap: var(--space-section); }
+}
+
+/* Steps */
+.steps { display: grid; }
+.step {
+  display: grid;
+  grid-template-columns: var(--space-section) minmax(0, 1fr);
+  gap: var(--space-roomy);
+  padding-block: var(--space-roomy);
+  border-top: 1px solid var(--color-role-border-strong);
+}
+.step > div { display: grid; gap: var(--space-tight); max-width: var(--size-measure); }
+.step-number {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-lead);
+  color: var(--color-role-text-muted);
+}
+
+/* Spec list */
+.spec { display: grid; }
+.spec-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-roomy);
+  padding-block: var(--space-roomy);
+  border-top: 1px solid var(--color-role-border-strong);
+}
+.spec-row dd { max-width: var(--size-measure); }
+@media (max-width: 720px) {
+  .spec-row { grid-template-columns: minmax(0, 1fr); gap: var(--space-tight); }
+}
+
+/* ---------- Builder ---------- */
+
+.builder {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-block);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .builder { grid-template-columns: minmax(0, 1fr); gap: var(--space-section); }
+}
+
+.panel { display: grid; }
+.panel legend { padding-bottom: var(--space-snug); color: var(--color-role-text-muted); }
+.panel noscript p { padding-bottom: var(--space-snug); }
+
+.layer-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--space-base);
+  align-items: center;
+  min-height: var(--size-control-medium);
+  padding: var(--space-snug) var(--space-base);
+  border-top: 1px solid var(--color-role-border);
+  cursor: pointer;
+  transition: background-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+.layer-row:last-child { border-bottom: 1px solid var(--color-role-border); }
+.layer-row:hover { background: var(--color-role-surface-sunken); }
+.layer-row:active { background: var(--color-role-border); }
+.layer-row-text { display: grid; }
+
+/* Accent use 3 of 3: the mark on a layer that is switched on. The tick box
+   and the bar are one mark; the bar means the state is not shown by the
+   box alone. */
+.layer-row input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--color-role-accent);
+  cursor: pointer;
+}
+.layer-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-role-accent);
+  opacity: 0;
+  transition: opacity var(--motion-duration-base) var(--motion-easing-standard);
+}
+.layer-row:has(input:checked)::before { opacity: 1; }
+.layer-row:has(input:checked) { background: var(--color-accent-50); }
+.layer-row:has(input:checked):hover { background: var(--color-role-surface-sunken); }
+.layer-row:has(input:not(:checked)) .figure { color: var(--color-role-text-muted); text-decoration: line-through; }
+
+/* Support use 2 of 2: the hard offset shadow under a sheet. */
+.preview {
+  display: grid;
+  gap: var(--space-roomy);
+  padding: var(--space-wide);
+  background: var(--color-role-surface);
+  border: 1px solid var(--color-role-border-strong);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-hard);
+  margin-right: var(--space-tight);
+}
+.preview-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-base);
+  padding-top: var(--space-base);
+  border-top: 1px solid var(--color-role-border-strong);
+}
+
+.empty { display: grid; gap: var(--space-snug); justify-items: start; max-width: 48ch; }
+.empty .button { margin-top: var(--space-tight); }
+
+@media (max-width: 720px) {
+  .preview { padding: var(--space-roomy); }
+}
+
+/* ---------- Pricing ---------- */
+
+.plans {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-wide);
+  align-items: start;               /* content sets the height of each plan */
+}
+@media (max-width: 720px) {
+  .plans { grid-template-columns: minmax(0, 1fr); }
+}
+.plan {
+  display: grid;
+  gap: var(--space-base);
+  justify-items: start;
+  padding: var(--space-wide);
+  background: var(--color-role-surface);
+  border: 1px solid var(--color-role-border-strong);
+  border-radius: var(--radius-large);
+}
+.plan--raised { box-shadow: var(--shadow-hard); margin-right: var(--space-tight); }
+.plan-list { display: grid; gap: var(--space-tight); width: 100%; }
+.plan-list li {
+  padding-top: var(--space-tight);
+  border-top: 1px solid var(--color-role-border);
+}
+.plan .button { margin-top: var(--space-base); }
+
+/* ---------- Sign up ---------- */
+
+.signup { display: grid; gap: var(--space-roomy); justify-items: start; max-width: 480px; }
+.field { display: grid; gap: var(--space-hair); width: 100%; }
+.input {
+  width: 100%;
+  height: var(--size-control-large);
+  padding: 0 var(--space-base);
+  font: inherit;
+  color: var(--color-role-text);
+  background: var(--color-role-surface);
+  border: 1px solid var(--color-role-border-strong);
+  border-radius: var(--radius-medium);
+  transition: border-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+.input:hover { border-color: var(--color-neutral-700); }
+.input:focus-visible { border-color: var(--color-role-text); }   /* not the accent */
+.input[aria-invalid="true"] { border-color: var(--color-danger-600); }
+.input:disabled {
+  background: var(--color-role-surface-sunken);
+  color: var(--color-role-text-disabled);
+}
+.error { color: var(--color-danger-600); }
+
+.notice {
+  padding: var(--space-snug) var(--space-base);
+  background: var(--color-role-surface);
+  border: 1px solid var(--color-role-border-strong);
+  border-radius: var(--radius-medium);
+  max-width: var(--size-measure);
+}
+.notice.is-error { border-color: var(--color-danger-600); color: var(--color-danger-600); }
+
+/* ---------- Footer ---------- */
+
+.footer { border-top: 1px solid var(--color-role-border); }
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-base);
+  padding-block: var(--space-wide);
+}
+.footer .link { display: inline-flex; align-items: center; min-height: var(--size-control-medium); }

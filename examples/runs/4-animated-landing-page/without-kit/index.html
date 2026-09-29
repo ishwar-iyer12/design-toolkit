@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tally: invoicing for freelance designers</title>
+<meta name="description" content="Tally turns tracked hours, revision rounds and licence fees into invoices your clients can pay in two taps. Built for freelance designers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="brand" href="#" aria-label="Tally home">
+    <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M9.7 4v16M14.3 4v16M19 4v16M1.5 17.5l21-11"/></svg>
+    <span>Tally</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn--small" href="#start">Start free</a>
+</header>
+
+<main id="main">
+
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">Invoicing for freelance designers</p>
+      <h1>Get paid for <em>all</em> of the work.</h1>
+      <p class="lede">Tally turns tracked hours, revision rounds and licence fees into an invoice your client can pay in two taps. No spreadsheet, no chasing, no "quick tweak" left unbilled.</p>
+      <div class="hero__actions">
+        <a class="btn" href="#start">Start free</a>
+        <a class="link" href="#how">See how it works <span aria-hidden="true">↓</span></a>
+      </div>
+      <p class="fine">Free for three invoices a month. No card needed.</p>
+    </div>
+
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="stage__cam">
+        <div class="rig" id="rig">
+          <div class="floor"></div>
+          <div class="cast"></div>
+          <div class="sheet sheet--c"></div>
+          <div class="sheet sheet--b"></div>
+
+          <div class="sheet sheet--a">
+            <div class="layer inv-head" style="--z:.8">
+              <svg class="inv-mark" viewBox="0 0 24 24"><path d="M5 4v16M9.7 4v16M14.3 4v16M19 4v16M1.5 17.5l21-11"/></svg>
+              <div class="inv-head__meta">
+                <b>Invoice Nº 0042</b>
+                <span>Okafor Studio → Lumen Coffee Co.</span>
+              </div>
+            </div>
+            <div class="layer row" style="--z:1.3; --top:8.6em">
+              <span><b>Brand identity system</b><i>38 h × $90</i></span><span class="num">3,420.00</span>
+            </div>
+            <div class="layer row" style="--z:1.9; --top:12.4em">
+              <span><b>Packaging, 4 SKUs</b><i>Fixed fee</i></span><span class="num">2,100.00</span>
+            </div>
+            <div class="layer row row--flag" style="--z:2.5; --top:16.2em">
+              <span><b>Revision round 3</b><i>Out of scope · 4 h</i></span><span class="num">360.00</span>
+            </div>
+            <div class="layer row" style="--z:3.1; --top:20em">
+              <span><b>Licence</b><i>Worldwide · 2 years</i></span><span class="num">900.00</span>
+            </div>
+            <div class="layer total" style="--z:4">
+              <span>Total due</span><span class="num">$6,780.00</span>
+            </div>
+            <div class="layer stamp-wrap" style="--z:5">
+              <div class="stamp" id="stamp">Paid</div>
+            </div>
+          </div>
+
+          <div class="chip chip--a"><i class="dot dot--blue"></i>Viewed by client · 2 min ago</div>
+          <div class="chip chip--b"><i class="dot dot--green"></i>Deposit received · $3,390</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Three steps between finished work and money in your account.</h2>
+    <ol class="steps">
+      <li>
+        <svg class="tallynum" viewBox="0 0 40 24" aria-hidden="true"><path d="M5 3v18"/></svg>
+        <h3>Track as you go</h3>
+        <p>Start a timer from the menu bar or log hours afterwards. Tag anything outside the brief as a revision round and Tally keeps it separate.</p>
+      </li>
+      <li>
+        <svg class="tallynum" viewBox="0 0 40 24" aria-hidden="true"><path d="M5 3v18M12 3v18"/></svg>
+        <h3>Send an invoice that looks like yours</h3>
+        <p>Your typeface, your colours, your grid. Hours, fixed fees and licences drop in as line items, already totalled and taxed.</p>
+      </li>
+      <li>
+        <svg class="tallynum" viewBox="0 0 40 24" aria-hidden="true"><path d="M5 3v18M12 3v18M19 3v18"/></svg>
+        <h3>Get paid, without the awkward email</h3>
+        <p>Clients pay by card or bank transfer from the invoice itself. If they go quiet, Tally sends the reminder so you don't have to.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--rule" id="features">
+  <div class="wrap">
+    <p class="eyebrow">Features</p>
+    <h2>Built around how design work is actually billed.</h2>
+    <dl class="features">
+      <div>
+        <dt><span class="tag">Revisions</span>Count the rounds</dt>
+        <dd>Set how many revision rounds the fee includes. When a project goes past it, the extra hours appear on the invoice as their own line.</dd>
+      </div>
+      <div>
+        <dt><span class="tag">Licensing</span>Usage rights as line items</dt>
+        <dd>Territory, duration and media are recorded on the invoice, so the licence your client bought is written down where you can both find it.</dd>
+      </div>
+      <div>
+        <dt><span class="tag">Deposits</span>Half up front</dt>
+        <dd>Split any project into a deposit and a balance. The final invoice subtracts what has already been paid.</dd>
+      </div>
+      <div>
+        <dt><span class="tag">Reminders</span>Polite, then firm</dt>
+        <dd>Choose a schedule and a tone. Reminders stop the moment the payment lands, and late fees are added only if you switched them on.</dd>
+      </div>
+      <div>
+        <dt><span class="tag">Branding</span>Your invoice, your layout</dt>
+        <dd>Upload fonts, set colours and margins, and place your logo. The PDF and the web version match.</dd>
+      </div>
+      <div>
+        <dt><span class="tag">Currencies</span>Bill in theirs, see yours</dt>
+        <dd>Invoice in your client's currency and track income in your own, with the exchange rate recorded on the day of payment.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="band" id="calculator">
+  <div class="wrap band__grid">
+    <div>
+      <p class="eyebrow eyebrow--light">Scope creep calculator</p>
+      <h2>What are the "quick tweaks" costing you?</h2>
+      <p class="band__lede">Move the sliders to match a typical year. The figure is simple arithmetic on your own numbers.</p>
+    </div>
+    <form class="calc" id="calc" onsubmit="return false">
+      <label class="calc__row">
+        <span>Hourly rate</span>
+        <output id="o-rate" class="num">$90</output>
+        <input id="rate" type="range" min="30" max="250" step="5" value="90">
+      </label>
+      <label class="calc__row">
+        <span>Unbilled revision hours per project</span>
+        <output id="o-hours" class="num">4 h</output>
+        <input id="hours" type="range" min="0" max="20" step="1" value="4">
+      </label>
+      <label class="calc__row">
+        <span>Projects per year</span>
+        <output id="o-projects" class="num">14</output>
+        <input id="projects" type="range" min="1" max="40" step="1" value="14">
+      </label>
+      <div class="calc__result" aria-live="polite">
+        <span>Left unbilled each year</span>
+        <strong id="o-total" class="num">$5,040</strong>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <p class="eyebrow">Pricing</p>
+    <h2>Free until it's earning its keep.</h2>
+    <div class="plans">
+      <article class="plan">
+        <h3>Starter</h3>
+        <p class="plan__price"><span class="num">$0</span></p>
+        <p class="plan__note">For the occasional project.</p>
+        <ul>
+          <li>3 invoices a month</li>
+          <li>Time tracking and revision rounds</li>
+          <li>Card and bank transfer payments</li>
+          <li>Tally footer on invoices</li>
+        </ul>
+        <a class="btn btn--ghost" href="#start">Start free</a>
+      </article>
+      <article class="plan plan--main">
+        <h3>Studio</h3>
+        <p class="plan__price"><span class="num">$14</span> <small>per month</small></p>
+        <p class="plan__note">For designers freelancing full time.</p>
+        <ul>
+          <li>Unlimited invoices and clients</li>
+          <li>Custom fonts, colours and layout</li>
+          <li>Deposits, licences and late fees</li>
+          <li>Automatic reminders</li>
+          <li>Multi-currency billing</li>
+        </ul>
+        <a class="btn btn--invert" href="#start">Try Studio free for 30 days</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--rule" id="faq">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">FAQ</p>
+    <h2>Questions, answered.</h2>
+    <div class="faq">
+      <details>
+        <summary>Does Tally take a cut of my payments?</summary>
+        <p>No. You pay the payment provider's standard processing fee on card payments and nothing on bank transfers. Tally charges only the plan price.</p>
+      </details>
+      <details>
+        <summary>Can I import clients and old invoices?</summary>
+        <p>Yes. Upload a CSV from your current tool or spreadsheet and map the columns. Past invoices come in as records, so your income history stays in one place.</p>
+      </details>
+      <details>
+        <summary>What does my client see?</summary>
+        <p>A web page with your branding, the line items and a pay button, plus a PDF attached to the email. They don't need an account.</p>
+      </details>
+      <details>
+        <summary>Can I cancel Studio at any time?</summary>
+        <p>Yes. You drop back to Starter at the end of the billing period and keep every invoice you've sent.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="start">
+  <div class="wrap">
+    <h2>Send your next invoice with Tally.</h2>
+    <form class="signup" id="signup" novalidate>
+      <label class="sr-only" for="email">Email address</label>
+      <input id="email" name="email" type="email" placeholder="you@studio.example" autocomplete="email" required>
+      <button class="btn btn--invert" type="submit">Start free</button>
+    </form>
+    <p class="signup__msg" id="signup-msg" role="status"></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <a class="brand" href="#" aria-label="Tally home">
+      <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M9.7 4v16M14.3 4v16M19 4v16M1.5 17.5l21-11"/></svg>
+      <span>Tally</span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <p>© <span id="year">2026</span> Tally</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
