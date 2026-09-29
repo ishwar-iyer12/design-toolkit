@@ -8,6 +8,7 @@ Rules for the eight components I reach for most. Every value is a token from `to
 - Loading is a state too. A control that starts a request shows progress in place and keeps its width.
 - Padding inside a component is smaller than the gap between components. Inside uses `tight` to `base`. Between uses `roomy` and up.
 - One primary action per view.
+- The accent has three jobs by default: the primary button, links, and the mark on the current or selected item (nav indicator, selected row). The focus ring is not counted. If you add a fourth job, remove one.
 
 ## Button
 
@@ -36,7 +37,7 @@ Height matches the button sizes so they line up in a row. Border is 1px `border-
 - The label sits above the field, `hair` gap, body size, medium weight. Placeholder text is not a label.
 - Help text sits below in caption size, `text-muted`.
 - Hover: border moves to `neutral.700`.
-- Focus-visible: the focus ring, plus the border moves to `accent`.
+- Focus-visible: the focus ring, plus the border moves to `text`. Not to the accent, which already has its three jobs.
 - Error: border `danger.600`, message below in `danger.600` with a text prefix such as "Error:". The message replaces the help text and says how to fix the problem.
 - Disabled: `surface-sunken` fill, `text-disabled`. Read-only is different: normal text, no border change, no fill.
 

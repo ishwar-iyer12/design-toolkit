@@ -20,6 +20,8 @@ Apply these rules before you write markup or styles. Then run the smell test on 
 
 - Pick one accent colour. Use it for at most three things, and name them before you start. Example: primary button, current nav item, links.
 - Everything else is neutral. Status colours (danger, warning, success) are for status only.
+- The focus ring may use the accent hue and does not count as one of the three. Any other use does, including a border that turns accent on focus.
+- Count the accent uses in your CSS before you report. If the design system's component rules would push you past three, follow this rule and say so.
 - No gradients. No glassmorphism or background blur. No drop shadows. The exception: the variant's `effects` block allows it, and then only where it says.
 - Separate surfaces with a 1px border or a change in fill, not a shadow.
 
