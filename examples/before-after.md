@@ -2,9 +2,9 @@
 
 Four prompts, each run in Claude Code on 29 September 2026: once with no skills loaded, once with the kit. Same model, same machine, fresh session for every run, no follow-up questions allowed. What follows is a written description of what came back, with numbers counted from the output files.
 
-One run per cell is a small sample. Treat this as a record of ten runs, not as a benchmark.
+One run per cell is a small sample. Treat this as a record of eleven runs, not as a benchmark.
 
-I expected the runs without the kit to be bad. They were not. They were inventive and mostly honest about their gaps. What the kit changed was discipline: fewer sizes, a real grid, no effects, stated divergences. It also exposed a bug in the kit, which is at the end.
+I expected the runs without the kit to be bad. They were not. They were inventive and mostly honest about their gaps, and on two prompts they beat the kit's first attempt on looks. What the kit changed from the start was discipline: fewer sizes, a real grid, stated divergences. Making its pages worth looking at took rewrites, and those are recorded here too.
 
 ## 1. A landing page
 
@@ -51,6 +51,27 @@ The headline was "Invoice the revisions you used to give away." Each section ans
 It reported its own gaps: no loading state, three font weights where two are usual, and a form error that depends on a newer CSS selector.
 
 What it got wrong: it reported three uses of the accent and had four. The input border turned accent on focus. It was following my component rules, which contradicted the skill. That is the bug described below.
+
+And it looked worse. Put the two screenshots side by side (`screenshots/1-landing-page-without-kit.png` and `screenshots/1-landing-page-with-kit-first-attempt.png`). The page without the kit has a typeface with character, a highlighted word, three colours and an invoice sitting on a stack of coloured sheets. Mine has the system font, one orange button and a grey box. Every one of those gaps came from a rule I wrote.
+
+**With the kit, second attempt**
+
+I rewrote the `marketing` variant: typeface pairings in place of the system font, a support colour, an 80px headline, a product view with weight, one repeating motif, and a check that asks whether the page is better than a plain one or only tidier. The taste skill got a section called "Restraint is not the goal". Same prompt, word for word.
+
+The concept: the invoice is the last thing a designer delivers, so it is proofed like a print job. The headline is "The invoice is the final deliverable.", set in Archivo at weight 800 with a yellow highlight behind the last word. The invoice sits on a sheet of process yellow with crop marks at its corners, and proofreader's notes in magenta mark the lines Tally added. The crop marks come back on the empty state and the sign-up box. One section is a full band of yellow.
+
+| What | Count |
+| --- | --- |
+| Distinct font sizes | 5, plus the small-screen display size |
+| Spacing values off the 4px grid | 0 |
+| Shadows | 1, a token the variant allows |
+| Gradients, blur | 0 |
+| Centred text rules | 0 |
+| Colours with a job | 2: magenta for action, yellow for mood |
+
+It kept what the first attempt did well: sections that answer a buyer's question, an empty state and an error state, no invented testimonials, and a list of everything it made up.
+
+Is it better than the page without the kit? I think it is at least level on looks now, and ahead on structure. But I should be plain about one thing: the highlighted word in the headline is an idea I took from the other page and wrote into the variant. The kit learned that from its opponent.
 
 ## 2. A data table
 
@@ -205,10 +226,10 @@ On everything you can count, the kit's page is ahead. But be fair about how it g
 
 ## What the runs found wrong with the kit
 
-Four things. The timid first attempt at 3D and the vanishing stamp in the second, both above. The plain landing page in prompt 1, which the `showcase` variant is the answer to. And a contradiction between two files:
+Four things. The timid first attempt at 3D and the vanishing stamp in the second, both above. The plain landing page in prompt 1, which led to the rewrite of `marketing` and to the `showcase` variant. And a contradiction between two files:
 
 `components.md` told the agent to turn an input border accent on focus. With a primary button, links and a current nav item, that is a fourth use of the accent, and the taste skill allows three. One run followed the component rule and miscounted. The other caught it.
 
 I fixed it after these runs. The input border now moves to the text colour on focus. `components.md` names the three default jobs for the accent, and the taste skill says the focus ring is not counted and tells the agent to count before it reports.
 
-Prompts 1 to 3 used the kit as it was before that fix. Prompt 4 used it after.
+The first attempts at prompts 1 to 3 used the kit as it was before that fix. Everything later used it after.

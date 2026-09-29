@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tally: invoicing for freelance designers</title>
+  <meta name="description" content="Tally tracks revision rounds, deposits and usage licences against the scope you agreed, and puts them on the invoice.">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip link" href="#content">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="#content">Tally</a>
+      <nav aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__item" href="#unbilled">What it bills</a></li>
+          <li><a class="nav__item" href="#getting-paid">Getting paid</a></li>
+          <li><a class="nav__item" href="#pricing">Pricing</a></li>
+          <li><a class="nav__item" href="#questions">Questions</a></li>
+          <li><a class="nav__item" href="/sign-in">Sign in</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="wrap">
+
+    <!-- What is it -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 class="display" id="hero-heading">Invoice the revisions you used to give away.</h1>
+
+      <div class="split hero__columns">
+        <div>
+          <p class="lead">Tally is invoicing for freelance designers. Set the scope once: rounds included, deposit, licence terms. When a project goes past it, the extra work is already on the invoice.</p>
+          <p class="section__action">
+            <a class="button button--primary" href="#start">Create your first invoice</a>
+          </p>
+          <p class="caption hero__note">Free for three invoices a month. No card needed.</p>
+        </div>
+
+        <figure>
+          <div class="product">
+            <div class="invoice__head">
+              <div>
+                <p class="invoice__number">Invoice 0047</p>
+                <p class="caption">Priya Raman Design to Marlow &amp; Finch Bakery</p>
+              </div>
+              <div>
+                <p class="caption">Issued 30 September 2026</p>
+                <p class="caption">Due 14 October 2026</p>
+              </div>
+            </div>
+
+            <table class="invoice__table">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col" class="amount">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Brand identity, final 50%
+                    <span class="caption invoice__detail">Deposit of £2,400.00 received 3 August</span>
+                  </th>
+                  <td class="amount">£2,400.00</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Revision round 3
+                    <span class="caption invoice__detail">Scope included 2 rounds. 4.5 hours at £65</span>
+                  </th>
+                  <td class="amount">£292.50</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Usage licence
+                    <span class="caption invoice__detail">Packaging and print, UK, 2 years</span>
+                  </th>
+                  <td class="amount">£600.00</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row">Subtotal</th>
+                  <td class="amount">£3,292.50</td>
+                </tr>
+                <tr>
+                  <th scope="row">VAT at 20%</th>
+                  <td class="amount">£658.50</td>
+                </tr>
+                <tr>
+                  <th scope="row">Total due</th>
+                  <td class="amount">£3,951.00</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <figcaption class="caption product__caption">An invoice as the client receives it. Tally added the second and third lines from the project scope.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- What does it do that my spreadsheet does not -->
+    <section id="unbilled" aria-labelledby="unbilled-heading">
+      <h2 class="title" id="unbilled-heading">Six things designers do for free, and what Tally does about each.</h2>
+      <p class="section__body prose">None of this is new to you. It goes unbilled because adding it by hand, three weeks later, feels like starting an argument. Tally adds it when it happens, with the scope the client signed next to it.</p>
+
+      <div class="table-scroll">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th scope="col">What slips</th>
+              <th scope="col">How it usually goes</th>
+              <th scope="col">What Tally does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Extra revision rounds</th>
+              <td>"Just one more small tweak" becomes round five.</td>
+              <td>Counts rounds against the number in scope. Round three onwards is logged at your hourly rate and the client is told before you start.</td>
+            </tr>
+            <tr>
+              <th scope="row">Deposits</th>
+              <td>You start work on a promise and chase the deposit in week two.</td>
+              <td>Sends the deposit invoice with the proposal. The project shows as "Waiting for deposit" until it clears.</td>
+            </tr>
+            <tr>
+              <th scope="row">Usage licences</th>
+              <td>The logo you licensed for packaging turns up on a billboard.</td>
+              <td>Records media, territory and term on the invoice, and reminds you 30 days before a licence ends so you can renew it.</td>
+            </tr>
+            <tr>
+              <th scope="row">Kill fees</th>
+              <td>The project is cancelled at 70% and you invoice for nothing.</td>
+              <td>Works out the fee from the stage reached and the percentage in your terms.</td>
+            </tr>
+            <tr>
+              <th scope="row">Rush work</th>
+              <td>A Friday evening request for Monday morning, at the normal rate.</td>
+              <td>Applies your rush rate to any work logged inside the notice period you set.</td>
+            </tr>
+            <tr>
+              <th scope="row">Late payment</th>
+              <td>You write the awkward email yourself, or you do not write it.</td>
+              <td>Sends reminders on day 1, 7 and 14 after the due date, in your name, with the statutory interest shown.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- What will I see when I sign up -->
+    <section aria-labelledby="day-one-heading">
+      <div class="split">
+        <div>
+          <h2 class="title" id="day-one-heading">Day one is an empty list and one button.</h2>
+          <div class="section__body prose">
+            <p>There is no setup wizard and no demo data to delete. You name a client, set the scope, and send.</p>
+            <p>If you are mid-project, enter the rounds already used and the deposit already paid. Tally picks up from there.</p>
+          </div>
+        </div>
+
+        <figure>
+          <div class="product">
+            <div class="empty__bar">
+              <p class="empty__view">Invoices</p>
+              <p class="caption">0 sent, £0.00 outstanding</p>
+            </div>
+            <div class="empty__message">
+              <p>Invoices appear here after you bill a client.</p>
+              <p class="caption">Add a client and the scope you agreed, and the first invoice is drafted for you.</p>
+              <p class="empty__action">
+                <a class="button button--secondary" href="#start">Create your first invoice</a>
+              </p>
+            </div>
+          </div>
+          <figcaption class="caption product__caption">The Invoices view in a new account.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Does it work with how I get paid -->
+    <section id="getting-paid" aria-labelledby="paid-heading">
+      <div class="split">
+        <div>
+          <h2 class="title" id="paid-heading">Clients pay the way they already pay.</h2>
+          <p class="section__body prose">The client gets a link, not an account. Your accountant gets the same numbers you see.</p>
+        </div>
+
+        <dl class="terms">
+          <div>
+            <dt>Card</dt>
+            <dd>Through your own Stripe account. Money goes to you, not through us.</dd>
+          </div>
+          <div>
+            <dt>Bank transfer</dt>
+            <dd>Your sort code and account number on the invoice, with a payment reference Tally matches when you mark it paid.</dd>
+          </div>
+          <div>
+            <dt>Clients abroad</dt>
+            <dd>Invoice in pounds, euros or US dollars. Wise account details are shown for the currency you bill in.</dd>
+          </div>
+          <div>
+            <dt>Accounts</dt>
+            <dd>Export to Xero or FreeAgent, or download a CSV for your self-assessment return.</dd>
+          </div>
+          <div>
+            <dt>
+              Overdue
+              <span class="status status--warning">Overdue by 6 days</span>
+            </dt>
+            <dd>Every late invoice is labelled with how late it is, and shows which reminder went out last.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- What does it cost -->
+    <section id="pricing" aria-labelledby="pricing-heading">
+      <h2 class="title" id="pricing-heading">Free until you send a fourth invoice in a month.</h2>
+      <p class="section__body prose">Two plans. Move between them whenever you like; your invoices and clients stay where they are.</p>
+
+      <div class="plans">
+        <div class="plan">
+          <h3 class="subhead">Solo</h3>
+          <p class="plan__price">£0</p>
+          <p class="plan__for">For a designer with a few clients at a time.</p>
+          <ul class="plan__list">
+            <li>3 invoices a month</li>
+            <li>Revision rounds tracked against scope</li>
+            <li>Deposit invoices</li>
+            <li>Card and bank transfer payments</li>
+          </ul>
+        </div>
+
+        <div class="plan">
+          <h3 class="subhead">Studio</h3>
+          <p class="plan__price">£9 <span>a month</span></p>
+          <p class="plan__for">For a full client list, or when licences and late payers need watching.</p>
+          <ul class="plan__list">
+            <li>Unlimited invoices</li>
+            <li>Everything in Solo</li>
+            <li>Usage licences with renewal reminders</li>
+            <li>Kill fees and rush rates</li>
+            <li>Late payment reminders with statutory interest</li>
+            <li>Export to Xero and FreeAgent</li>
+            <li>Invoices in euros and US dollars</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="pricing__fees prose">Tally takes no cut of what you are paid. Stripe charges its own card fee, and bank transfers cost nothing. See <a class="link" href="/pricing">the full price list</a> for VAT and annual billing.</p>
+    </section>
+
+    <!-- What about my situation -->
+    <section id="questions" aria-labelledby="questions-heading">
+      <h2 class="title" id="questions-heading">Questions designers ask first.</h2>
+
+      <div class="questions">
+        <details class="question">
+          <summary>Will my client see that I am counting revision rounds?</summary>
+          <p>Yes, and that is the point. The proposal states how many rounds are included. When a request would start a paid round, the client gets a short note saying so and can go ahead or hold off.</p>
+        </details>
+        <details class="question">
+          <summary>I charge a fixed fee, not by the hour. Does this still work?</summary>
+          <p>Yes. Set a flat price per extra round instead of an hourly rate. Deposits, licences and kill fees work the same way on fixed-fee projects.</p>
+        </details>
+        <details class="question">
+          <summary>I am not VAT registered. Can I turn VAT off?</summary>
+          <p>Yes. VAT is off until you add a VAT number. If you register later, add the number and the date, and invoices from that date include it.</p>
+        </details>
+        <details class="question">
+          <summary>Can I take my invoices with me if I leave?</summary>
+          <p>Yes. Download every invoice as a PDF and every record as a CSV from Settings, on either plan, at any time.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- How do I start -->
+    <section id="start" class="start" aria-labelledby="start-heading">
+      <div class="split">
+        <div>
+          <h2 class="title" id="start-heading">Send the invoice you have been putting off.</h2>
+          <p class="section__body prose">Enter your email address and we send a sign-in link. Your first invoice can be with the client in about ten minutes.</p>
+        </div>
+
+        <form action="/sign-up" method="post">
+          <div class="field">
+            <label class="field__label" for="email">Email address</label>
+            <input class="field__input" id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-help email-error">
+            <p class="field__help" id="email-help">We send one sign-in link. No password, no card.</p>
+            <p class="field__error" id="email-error">Error: that is not a full email address. Enter one with an @ and a domain, such as priya@ramandesign.example.</p>
+          </div>
+          <p class="start__action">
+            <button class="button button--primary" type="submit">Create your first invoice</button>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="caption">Tally. Invoicing for freelance designers.</p>
+      <ul class="footer__links caption">
+        <li><a class="link" href="/terms">Terms</a></li>
+        <li><a class="link" href="/privacy">Privacy</a></li>
+        <li><a class="link" href="mailto:help@tally.example">help@tally.example</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

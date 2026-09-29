@@ -1,38 +1,26 @@
-I built the Tally landing page as three files in plain HTML and CSS. I have not seen it rendered: the browser check could not capture a screenshot, so the layout is checked by reading the code only. The page loaded without errors apart from a missing favicon.
+I built the Tally landing page with the taste skill and the marketing variant. Open `index.html`; it works from a file:// URL, with styles in `styles.css`.
 
-## Files
+**What is on the page**
 
-- `index.html`: the page
-- `styles.css`: layout and components
-- `tokens.css`: the kit's base tokens with the marketing overrides applied
+1. Hero: the headline "The invoice is the final deliverable.", one paragraph, one action, and a real invoice on a yellow sheet, marked up with Tally's notes.
+2. Line items: a three-row comparison of a spreadsheet against Tally, for revision rounds, usage licences and deposits.
+3. Late payers: a yellow band with the reminder timeline, day 0 to day 44.
+4. Day one: the empty state of the invoice list and the error for a bounced address, on a grey fill.
+5. Pricing: a table, Free against Studio at £9 a month. It becomes a stacked list on a phone.
+6. Questions: five, in open-and-close rows.
+7. Start: an email form with the same action as the hero.
 
-## What is on the page
+**Things you should know**
 
-The headline is "Invoice the revisions you used to give away." Each section answers one buyer question:
+- I wrote all the content myself, because there was none to read. The designer, the client, the prices, the fees, the plan limits and the company address are invented. Replace them with the real ones before this goes anywhere.
+- There is no testimonial. The variant says social proof uses real names and real numbers or is left out, and I had neither.
+- The form is not connected to anything. Submitting a valid address shows "Workspace link sent", but no email is sent. It needs a real endpoint.
+- The typefaces load from Google Fonts, so the page needs a connection to look right. Offline it falls back to the system font. To ship it, host the font files yourself.
+- The accent and support colours are my own, not the variant's defaults of burnt orange and sage. The variant asks for both to come from the concept. White on the magenta measures about 6.8:1.
+- The design system's component rules give the accent's third job to the current nav item. I gave it to the proof notes instead, and left the nav neutral, to stay at three.
+- I looked at the page in headless Chrome at 1280px and at 390px. I did not test it in Firefox or Safari, or with a screen reader. The form's error message relies on `:user-invalid`, which older browsers do not support.
 
-| Section | Question it answers |
-| --- | --- |
-| Hero, with a real invoice showing a billed third revision round and a usage licence | What is it? |
-| Table of six things designers do for free | What does it do that my spreadsheet does not? |
-| The Invoices view in a new account | What will I see when I sign up? |
-| Payment methods and exports | Does it work with how I get paid? |
-| Two plans, Solo at £0 and Studio at £9 a month | What does it cost? |
-| Four questions | What about my situation? |
-| Email sign-up form | How do I start? |
-
-The one primary action is "Create your first invoice". It appears in the hero and on the sign-up form, and as a secondary button inside the empty-state view.
-
-## Things you need to know
-
-- **All product facts are invented.** You gave me no content, so I wrote it: prices, plan limits, the Stripe, Wise, Xero and FreeAgent integrations, the reminder schedule, and the names on the sample invoice. Replace anything that is not true of Tally before this goes live.
-- **There is no testimonial section.** The marketing variant says social proof uses real names and real numbers or is left out, and I have none.
-- **The form has nowhere to send.** It posts to `/sign-up`, which does not exist. The links to `/sign-in`, `/pricing`, `/terms` and `/privacy` are also placeholders, as is the address `help@tally.example`.
-- **The loading state is not built.** There is no JavaScript, so the sign-up button does not show progress after a click. Disabled styles exist but nothing uses them.
-- **The form error relies on `:user-invalid`.** In browsers without it, the person sees only the browser's own validation message.
-- **Three font weights are used, not two.** Headings are bold, and buttons, labels and table headers are medium, as the kit's component rules ask.
-
-## Report
-
-- Variant: marketing, as you asked. It fits a page read once by someone deciding whether to care.
-- Accent: burnt orange `accent.600` (#b93a0a), marking the primary button, text links and the focus ring.
-- Smell test: passed, with one gap on item 11. The empty state and the form error state are present; the loading state is missing.
+- Variant: marketing, because this is a landing page read once by someone deciding whether to care.
+- Concept: the invoice is the last thing a designer delivers, so it is proofed like a print job, with crop marks, slug lines and a proofreader's notes.
+- Accent: proof magenta (#b0174f), marking the primary button, text links, and the proof notes on the invoice.
+- Smell test: passed. Two things changed on the way: I removed a testimonial I had planned, and the phone-width pricing table became a stacked list.

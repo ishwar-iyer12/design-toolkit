@@ -71,13 +71,13 @@ I ran four prompts with no skills and with the kit. These are the results, one r
 | Match a mockup | ![Mockup match without the kit](examples/screenshots/3-screenshot-without-kit.png) | ![Mockup match with the kit](examples/screenshots/3-screenshot-with-kit.png) |
 | Landing page with 3D | ![Animated page without the kit](examples/screenshots/4-animated-without-kit.gif) | ![Animated page with the kit](examples/screenshots/4-animated-with-kit.gif) |
 
-The pages without the kit are not ugly. In the first row the page without the kit is the better looking one, which is why the `showcase` variant and the `motion` skill exist: the last row uses them. Even there it took three attempts: the first was too timid, the second had a bug in the animation, and I revised the skill after each. What the kit changes reliably shows up when you count:
+The pages without the kit are not ugly, and the kit did not win these on the first try. Its first landing page was grey and forgettable, and its first two animated pages were timid and then buggy. I rewrote the variants and the `motion` skill after each failure. The rows above show the latest attempts. The failed ones are in `examples/` with the reasons. What the kit changes reliably shows up when you count:
 
 | Measure | Without | With |
 | --- | --- | --- |
 | Landing page: font sizes | 17 | 5 |
 | Landing page: spacing values off the 4px grid | 11 | 0 |
-| Landing page: shadows, gradients and blurs | 14 | 0 |
+| Landing page: shadows, gradients and blurs | 14 | 1 |
 | Orders table: states built (loading, empty, no matches, failed) | 1 of 4 | 4 of 4 |
 | Mockup match: pixels that differ from the source, of 5,184,000 | 4,379,452 | 3 |
 | Mockup match: differences from the source listed in the output | 3 | 18 |

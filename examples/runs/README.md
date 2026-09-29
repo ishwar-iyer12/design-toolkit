@@ -1,11 +1,12 @@
 # Recorded runs
 
-The files behind `examples/before-after.md`. Ten runs in Claude Code on 29 September 2026, one folder each. Open any `index.html` (or `orders.html`) in a browser to see the result.
+The files behind `examples/before-after.md`. Eleven runs in Claude Code on 29 September 2026, one folder each. Open any `index.html` (or `orders.html`) in a browser to see the result.
 
 | Folder | Prompt | Kit |
 | --- | --- | --- |
 | `1-landing-page/without-kit` | Build a landing page for Tally, an invoicing tool for freelance designers. | None |
-| `1-landing-page/with-kit` | Same, with "Use the taste skill with the marketing variant." | `taste` |
+| `1-landing-page/with-kit-first-attempt` | Same, with "Use the taste skill with the marketing variant." | `taste`, with the first version of the marketing variant. Looked worse than the page without the kit |
+| `1-landing-page/with-kit` | The same prompt again. | `taste`, after the marketing variant was rewritten |
 | `2-orders-table/without-kit` | Make an orders page for the admin panel. | None |
 | `2-orders-table/with-kit` | Same, with the dashboard variant and six named columns. | `taste` |
 | `3-screenshot/without-kit` | Build this. (settings-mockup.png attached) | None |
@@ -26,7 +27,8 @@ The output is as the runs wrote it, apart from these edits, made so the files me
 | File | Change |
 | --- | --- |
 | `1-landing-page/without-kit/index.html` | Dash in the page title replaced with a colon. Placeholder email moved to a `.example` domain. |
-| `1-landing-page/with-kit/index.html` | Sample email in an error message moved to a `.example` domain. |
+| `1-landing-page/with-kit-first-attempt/index.html` | Sample email in an error message moved to a `.example` domain. |
+| `1-landing-page/with-kit/index.html` | Sample email on the invoice moved to a `.example` domain. |
 | `2-orders-table/without-kit/orders.css` | Dash in the opening comment replaced with a comma. |
 | `2-orders-table/without-kit/orders.js` | Dashes in two comments replaced. The dash in the pager range ("1 to 25 of 86") replaced with "to". |
 | `1-landing-page/without-kit/RESPONSE.md` | A local folder path replaced with "this folder". |
@@ -40,7 +42,7 @@ Left out: the browser logs the runs produced, one comparison render, and a secon
 ## Reading them fairly
 
 - One run per prompt and condition. A second run would differ.
-- Runs 1 to 3 used the kit as it was before the accent fix described at the end of `before-after.md`. Run 4 used it after.
+- The first attempts at runs 1 to 3 used the kit as it was before the accent fix described at the end of `before-after.md`. Later attempts used it after.
 - The four pages in run 4 load fonts from Google Fonts.
 - The third attempt in run 4 keeps the test hooks its run used to freeze the animation: add `?freeze=1500` to the address to stop it 1500ms in.
 - The GIFs are 560 pixels wide at 10 frames a second. The pages are smoother than that.
