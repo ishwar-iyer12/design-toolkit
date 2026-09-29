@@ -2,7 +2,7 @@
 
 Four prompts, each run in Claude Code on 29 September 2026: once with no skills loaded, once with the kit. Same model, same machine, fresh session for every run, no follow-up questions allowed. What follows is a written description of what came back, with numbers counted from the output files.
 
-One run per cell is a small sample. Treat this as a record of nine runs, not as a benchmark.
+One run per cell is a small sample. Treat this as a record of ten runs, not as a benchmark.
 
 I expected the runs without the kit to be bad. They were not. They were inventive and mostly honest about their gaps. What the kit changed was discipline: fewer sizes, a real grid, no effects, stated divergences. It also exposed a bug in the kit, which is at the end.
 
@@ -169,23 +169,43 @@ The cause was my skill. It capped rotation at 25 degrees for anything with text 
 
 I changed the skill: the rotation limit applies to text a person has to read, not to a depicted object. The object must rest in a pose that still reads as 3D, fill at least 40% of the hero, and sit on something. Then I ran the same prompt again, word for word.
 
-![With the kit, second attempt](screenshots/4-animated-with-kit.gif)
+![With the kit, second attempt](screenshots/4-animated-with-kit-second-attempt.gif)
 
 A carbon-copy invoice pad on a cutting mat. The pad drops, is dealt into three sheets at three heights (top copy, pink carbon copy, ledger sheet), and a stamp lands. It rests at 35 degrees on one axis and 25 on another, then floats slowly with still periods. There are buttons to replay it and to pause the float. Further down, the top copy is laid flat, readable and editable.
 
 5 font sizes, no spacing off the grid, no gradients, 7 reduced-motion rules. States for the builder and the form: empty, field error, loading, done, offline.
 
-What it got wrong: the stamp hangs over the corner of the sheet, the section links in the nav disappear below 960px, and the opening cannot be skipped. It listed all three itself. Like the others, it never watched its animation run.
+What it got wrong, by its own list: the stamp hangs over the corner of the sheet, the section links in the nav disappear below 960px, and the opening cannot be skipped.
+
+What it got wrong and did not list: the stamp vanishes. Watch the recording at about three seconds. I counted the stamp's ink in every frame: 1902 pixels as it drops in, 163 a fraction of a second later, 1287 once it settles. The stamp lands with an easing curve that overshoots, so it travels through the paper, hides behind it, and comes back. The page without the kit has no such fault. Its stamp appears once and stays.
+
+The run had looked at the last frame only, and its report said the motion smell test had passed.
+
+**With the kit, third attempt**
+
+Two more changes to the skill. Overshoot easing is for rotation and scale, never for something landing on a surface. And before reporting, the agent freezes the animation at five points in every beat and looks at each one. If it cannot, the report has to say so.
+
+Same prompt, third time.
+
+![With the kit, third attempt](screenshots/4-animated-with-kit.gif)
+
+The concept from the first attempt came back: "Your last artboard is the invoice." The view tilts from top-down, the invoice separates into three layers (letterhead, line items, total) with a shadow under each, and a Paid stamp lands on the paper. It rests at 34 and 26 degrees and floats on an eight second loop, half of it still.
+
+I ran the same count. The stamp's ink goes from 0 to about 2500 in a tenth of a second and stays there. No dip.
+
+The run froze the animation at 13 points and found four faults before I saw the page: lifted layers covering text, a shadow hanging off its layer, another shadow running over a label, and the headline running into the object. It fixed all four. Its report says "Not watched in motion", which is true.
+
+5 font sizes, no gradients, states for the editor and the form. It is greyer than the second attempt. The pink sheet is gone and I miss it.
 
 **Which is better**
 
-On looks, I would call the second attempt and the page without the kit about even, and people will disagree. The kit's page is calmer and its object is readable. The other is punchier and has more colour.
+On looks, I would call the third attempt and the page without the kit about even, and people will disagree. The kit's page is calmer and its object is readable. The other is punchier and has more colour.
 
-On everything you can count, the kit's page is ahead. But be fair about how it got there: the second attempt came after I had seen the other page and rewritten the skill. The new rules are general, and one prompt cannot show that they hold for other products.
+On everything you can count, the kit's page is ahead. But be fair about how it got there. It took three attempts, and I rewrote the skill after each of the first two, having seen the other page. The page without the kit was right the first time. The new rules are general, and one prompt cannot show that they hold for other products.
 
 ## What the runs found wrong with the kit
 
-Three things. The first attempt at 3D, above, was one. The plain landing page in prompt 1 was another, and the `showcase` variant is the answer to it. The third was a contradiction between two files:
+Four things. The timid first attempt at 3D and the vanishing stamp in the second, both above. The plain landing page in prompt 1, which the `showcase` variant is the answer to. And a contradiction between two files:
 
 `components.md` told the agent to turn an input border accent on focus. With a primary button, links and a current nav item, that is a fourth use of the accent, and the taste skill allows three. One run followed the component rule and miscounted. The other caught it.
 

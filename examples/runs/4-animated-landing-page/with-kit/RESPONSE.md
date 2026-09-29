@@ -1,33 +1,43 @@
-I built the Tally landing page as three files with no build step and no libraries. Open `index.html` directly from disk. Only the web fonts load from the network, and the page falls back to system fonts without them.
+The Tally landing page is built. Open `index.html` from disk; it needs no server or build step.
 
-- `index.html`
-- `styles.css`
-- `script.js`
+**Files**
 
-## What is on the page
+- `index.html`: the page
+- `tally.css`: tokens and styles
+- `tally.js`: the sample invoice, the forms, the pointer tilt and the pause control
 
-1. **Hero with the 3D animation.** An invoice pad drops onto a cutting mat, is dealt into three sheets at three heights (ledger sheet, pink carbon copy, top copy), and a PAID stamp comes down on the top copy. It then rests in a tilted 3D pose, and the top sheet floats slightly. "Stamp it again" replays it and "Pause the float" stops the loop. On a desktop the pad tilts up to 8 degrees towards the pointer.
-2. **One invoice, three sheets.** What each sheet is for.
-3. **The top copy, laid flat.** The same invoice, readable, and editable: remove lines, add a line, stamp it paid.
-4. **The small print, in your favour.** Deposits, revision rounds, usage licences, late fees, kill fees.
-5. **Two pads.** Pricing.
-6. **Get your pad.** Email sign-up.
+**What is on the page**
 
-## Things you should know
+- A hero with the 3D invoice on a cutting mat.
+- "Three layers": letterhead, line items and total, explained in words.
+- The same invoice laid flat, which you can edit. Removing every line shows the empty state. Submitting the form with blank fields shows the errors.
+- A pricing table, four questions, and a sign-up form.
 
-- **All the content is invented.** The skills say to ask for real content. I was told not to ask questions, so I wrote it myself. That includes the prices ($0 and $9 a month), the 2.9% plus 30 cents card fee, the three-invoices-a-month free limit, every feature claim, the sample studio and client (Oyelaran Studio, Fennel & Rye Bakery), and the `hello@tally.example` address. Replace these with the real ones before anyone sees the page.
-- **The sign-up form is not connected to anything.** `sendLink()` in `script.js` is a 900ms timer. It shows the "Link sent" confirmation but sends no email. It needs a real request before the page goes live.
-- **I changed the default colours.** The showcase defaults are deep green and peach. I used ink blue (`#23308f`) and carbon-copy pink (`#f5b5bc`) because they fit the concept. The variant allows this.
-- **What I checked.** I took headless Chrome screenshots at 1440px, 1280px and 500px wide, ten seconds after load, and screenshots of the invoice empty state, the form errors, an added line and the stamp. All rendered as intended after fixes.
-- **What I did not check.** I could not get Chrome to emulate reduced motion, so that path is written but not seen. I did not test the pointer tilt, the replay and pause buttons, keyboard tabbing, the offline error, a screen reader, or any browser other than Chrome. I did not measure frame rate.
-- **Small known flaws.** In the hero the stamp overlaps the end of the client name on the illustrated invoice. Below 960px the section links in the nav are hidden and only "Get your pad" remains. The opening animation plays on load and cannot be stopped during its three seconds; the float after it can.
+**The 3D animation**
 
-## Report
+It runs once on load, in three beats:
 
-- Variant: showcase, as you asked. It is the one landing page that has to be remembered, and it is the variant that permits depth, a second colour and a signature animation.
-- Concept: a carbon-copy invoice pad on a designer's cutting mat, where the top copy goes to the client, the carbon copy stays with you, and a rubber stamp says PAID. It appears in the hero, in the recurring motifs (perforated dashed rules, the pink sheet showing from under panels, the stamp), and in the wording ("tear it off", "top copy", "scratch pad").
-- Accent: ink blue `#23308f`, marking the primary button, text links, and the PAID stamp. The support colour, carbon pink `#f5b5bc`, marks the carbon copy sheet and the hard offset shadow. The focus ring uses the accent hue and is not counted.
-- Smell test: passed, after changes. I moved the stamp twice because it covered the amounts, then the empty-state button. I made the invoice table scroll on narrow screens instead of crushing the first column. Two points are judgement calls: the page uses three font weights (400, 500, 650) where the rule says two are usually enough, and the sizes of the illustrated sheets (300 by 440px) are object dimensions, not spacing steps.
-- Signature: the pad is dealt into three sheets and stamped PAID, in three beats (1200ms, 1200ms, 600ms). It shows how the product works: one invoice becomes three records, and ends paid.
-- Reduced motion: the finished rest pose, with all three sheets fanned out and the stamp in place. Nothing floats, the pointer tilt is off, and the replay and pause buttons are hidden. Not verified in a browser, as noted above.
-- Motion smell test: passed on the screenshots I could take. The ten-second still reads as 3D (35 degrees on X, 25 on Z, three separated layers with shadows on a gridded mat), and the object fills more than half the hero width. Items that depend on watching it move (frame rate, the feel of the stamp) are unverified.
+1. The view tilts from top-down to an angled view of the desk.
+2. The invoice comes apart into three layers, each with its shadow on the layer below.
+3. A "Paid" stamp lands on the paper.
+
+It then rests in that pose and floats slightly, four seconds moving and four seconds still. "Pause the float" stops it. With a mouse, the object tilts up to 8 degrees towards the pointer.
+
+**Things you should know**
+
+- **I wrote all the content.** The skill says to ask for real content; I was told not to ask, so the copy, the plans and prices (Solo free, Studio £9 a month), the feature claims, and the example studio and client are invented. Replace them before this goes live.
+- **The sign-up form is not connected to anything.** It checks the email address and then says no account was created.
+- **I did not see the animation running in real time.** I froze it in headless Chrome and looked at stills: 13 points across the three beats, the float at its furthest point, the pointer tilt at all four corners, and the reduced-motion view. I found and fixed three things: the lifted layers covered the letterhead text and the last line item, the total's shadow hung off the edge of its layer, and the paper's shadow ran over the mat label. Easing and smoothness between the stills are unchecked.
+- **Fonts load from Google Fonts.** Offline, the page falls back to system fonts. I did not look at the fallback rendering.
+- **Test hooks are left in `tally.js`.** `?freeze=1500`, `?float=25`, `?tilt=1,-1`, `?state=empty` and `?state=error` on the URL hold the page in those states. Delete them if you do not want them.
+- I checked layouts at 1440px and 390px wide. I did not test in Firefox or Safari, or with a screen reader.
+
+**Report**
+
+- Variant: showcase, as you asked. It fits a product home page that has to be remembered in the first five seconds.
+- Concept: An invoice is a designer's last artboard, built in layers on a cutting mat, registered with crop marks and stamped when it is paid.
+- Accent: drafting-ink blue (#2a3ea8) on the primary button, text links, and the total due figure. The support colour, stamp vermilion, marks the Paid stamp and the hard offset shadow under the flat invoice sheet. I replaced the variant's default green and peach to fit the concept.
+- Smell test: passed. I changed one thing on the way: the headline ran into the 3D object, so I narrowed it to break over three lines.
+- Signature: the invoice tilts into view, separates into letterhead, line items and total, and is stamped paid. It shows that Tally treats an invoice as layers you can change one at a time, and that the job ends with payment.
+- Reduced motion: the finished pose, with the layers apart and the stamp down, with no movement. The float, the pointer tilt and the pause button are off.
+- Motion smell test: passed on the frozen stills, with the three fixes above. Not watched in motion.

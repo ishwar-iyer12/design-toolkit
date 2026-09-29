@@ -1,328 +1,314 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tally: the invoice pad for freelance designers</title>
-<meta name="description" content="Tally is an invoice pad for freelance designers. Write up the job, tear off the top copy for your client, keep the carbon copy for your books.">
+<title>Tally: invoices for freelance designers</title>
+<meta name="description" content="Tally builds invoices the way designers build layouts: in layers. Letterhead, line items, total, and a stamp when the client pays.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500..800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&family=Work+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="tally.css">
+<script src="tally.js"></script>
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav">
-  <div class="wrap nav__row">
-    <a class="nav__mark" href="#top" aria-label="Tally, back to top">Tally</a>
-    <nav aria-label="Sections">
-      <ul class="nav__list">
-        <li class="nav__section"><a href="#sheets">Three sheets</a></li>
-        <li class="nav__section"><a href="#top-copy">The top copy</a></li>
-        <li class="nav__section"><a href="#small-print">Small print</a></li>
-        <li class="nav__section"><a href="#pricing">Pricing</a></li>
-        <li><a href="#start">Get your pad</a></li>
+  <div class="wrap nav-row">
+    <a class="wordmark" href="#main">Tally</a>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="#layers">Layers</a></li>
+        <li><a href="#sample">Sample invoice</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#questions">Questions</a></li>
       </ul>
     </nav>
+    <a class="btn btn-secondary" href="#start">Create account</a>
   </div>
 </header>
 
 <main id="main">
 
   <!-- Hero -->
-  <section class="hero wrap" id="top">
-    <div class="hero__words">
-      <p class="label">Invoice pad for freelance designers</p>
-      <h1 class="display">Tear it off. Get it paid.</h1>
-      <p class="lead">Write up the job once. Tally tears off the top copy for your client, keeps the carbon copy for you, and posts the ledger sheet to your books. When the money lands, it stamps the invoice paid.</p>
-      <div class="actions">
-        <a class="btn btn--primary btn--large" href="#start">Write your first invoice</a>
-        <a class="btn btn--secondary btn--large" href="#top-copy">Read a sample invoice</a>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="label">Artboard 12 of 12</p>
+        <h1 class="display">Your last artboard is the invoice.</h1>
+        <p class="lead measure">Tally builds an invoice the way you build a layout: in layers. Letterhead on the bottom, line items above it, the total on top. Send it, and the stamp lands when the client pays.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-large" href="#start">Send your first invoice</a>
+          <a class="link" href="#sample">Read the sample invoice</a>
+        </div>
       </div>
-      <p class="caption muted">Free for three invoices a month. No card needed.</p>
-    </div>
 
-    <figure class="stage" id="stage">
-      <div class="stage__view" role="img" aria-label="Three sheets of an invoice pad fanned out above a cutting mat: a ledger sheet, a pink carbon copy, and on top the client's invoice No. 0047 for $3,810.00, stamped PAID.">
-        <div class="scene" aria-hidden="true">
-          <div class="pad" id="pad">
+      <div class="hero-object">
+        <div class="stage" id="stage" role="img" aria-label="An invoice from Okafor Studio to Fernhill Coffee Roasters, lying on a cutting mat and pulled apart into three layers: letterhead, line items and total. It is stamped paid.">
+          <div class="scale" aria-hidden="true">
+            <div class="tilt" id="tilt">
+              <div class="breathe">
+                <div class="pose sig">
 
-            <div class="mat">
-              <svg width="100%" height="100%" focusable="false">
-                <defs>
-                  <pattern id="mat-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-                    <path d="M24 0H0V24" fill="none" stroke="#d2d1cc" stroke-width="1"/>
-                  </pattern>
-                  <pattern id="mat-grid-major" width="96" height="96" patternUnits="userSpaceOnUse">
-                    <path d="M96 0H0V96" fill="none" stroke="#a3a29c" stroke-width="1"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#mat-grid)"/>
-                <rect width="100%" height="100%" fill="url(#mat-grid-major)"/>
-              </svg>
-            </div>
+                  <div class="mat">
+                    <svg class="mat-grid" width="100%" height="100%" focusable="false">
+                      <defs>
+                        <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                          <path d="M24 0H0V24" fill="none" stroke="currentColor" stroke-width="1"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill="url(#grid)"/>
+                    </svg>
+                    <span class="mat-label mat-label-a">Layer 1: Letterhead</span>
+                  </div>
 
-            <div class="cast cast--ledger"></div>
-            <div class="cast cast--carbon"></div>
-            <div class="cast cast--top"></div>
+                  <div class="cast cast-paper sig"></div>
 
-            <div class="sheet sheet--ledger">
-              <div class="face face--ledger">
-                <p class="face__stub"><span>Ledger sheet</span><span>Sept 2026</span></p>
-                <ul class="face__lines">
-                  <li><span>0045</span><span>Paid</span></li>
-                  <li><span>0046</span><span>Late</span></li>
-                  <li><span>0047</span><span>Paid</span></li>
-                  <li><span>0048</span><span>Draft</span></li>
-                </ul>
-              </div>
-            </div>
+                  <div class="paper sig">
+                    <div class="paper-head">
+                      <p class="paper-studio">Okafor Studio</p>
+                      <p class="paper-no">Invoice 0042</p>
+                    </div>
+                    <div class="paper-meta">
+                      <p><span>Billed to</span>Fernhill Coffee Roasters</p>
+                      <p><span>Due</span>14 Oct 2026</p>
+                    </div>
+                    <div class="paper-slot"></div>
 
-            <div class="sheet sheet--carbon">
-              <div class="face face--carbon">
-                <p class="face__stub"><span>Carbon copy</span><span>No. 0047</span></p>
-                <p class="face__title">Invoice</p>
-                <ul class="face__lines">
-                  <li><span>Brand identity</span></li>
-                  <li><span>Packaging</span></li>
-                  <li><span>Revision 3</span></li>
-                  <li><span>Licence</span></li>
-                </ul>
-              </div>
-            </div>
+                    <div class="cast cast-items sig"></div>
 
-            <div class="sheet sheet--top">
-              <div class="float">
-                <div class="face face--top">
-                  <p class="face__stub"><span>Tally</span><span>No. 0047</span></p>
-                  <p class="face__title">Invoice</p>
-                  <p class="face__meta">Fennel &amp; Rye Bakery<br>Due 29 Sep 2026</p>
-                  <ul class="face__lines">
-                    <li><span>Brand identity</span><span>3,200.00</span></li>
-                    <li><span>Packaging, 14 h</span><span>1,330.00</span></li>
-                    <li><span>Revision round 3</span><span>280.00</span></li>
-                    <li><span>Usage licence</span><span>600.00</span></li>
-                    <li><span>Deposit</span><span>&minus;1,600.00</span></li>
-                  </ul>
-                  <p class="face__total"><span>Due</span><span>$3,810.00</span></p>
+                    <div class="items sig">
+                      <p class="layer-tag">Layer 2: Line items</p>
+                      <ul class="items-list">
+                        <li><span>Discovery and strategy</span><span>£1,020</span></li>
+                        <li><span>Logo suite</span><span>£2,400</span></li>
+                        <li><span>Packaging, 250g bag</span><span>£1,530</span></li>
+                        <li><span>Revisions, round two</span><span>£340</span></li>
+                      </ul>
+
+                      <div class="cast cast-total sig"></div>
+
+                      <div class="total sig">
+                        <span class="total-label">Total due</span>
+                        <span class="total-figure">£6,348</span>
+                      </div>
+                    </div>
+
+                    <div class="stamp sig">Paid</div>
+                    <p class="paper-foot">Bank transfer<br>30 day terms</p>
+                  </div>
+
                 </div>
-                <div class="stamp stamp--hero"><span class="stamp__word">Paid</span><span class="stamp__date">26 Sep 2026</span></div>
               </div>
             </div>
-
           </div>
         </div>
+        <button class="btn btn-quiet btn-small" id="float-toggle" type="button" aria-pressed="false" hidden>Pause the float</button>
       </div>
-      <figcaption class="stage__controls">
-        <button class="btn btn--quiet" type="button" id="replay">Stamp it again</button>
-        <button class="btn btn--quiet" type="button" id="pause" aria-pressed="false">Pause the float</button>
-      </figcaption>
-    </figure>
+    </div>
   </section>
 
-  <!-- Three sheets -->
-  <section class="section wrap" id="sheets">
-    <div class="section__head">
-      <h2 class="title">One invoice, three sheets</h2>
-      <p class="measure">A paper invoice pad writes every invoice three times at once, through the carbon. Tally works the same way, so you never retype a number or wonder which version the client saw.</p>
+  <!-- Layers -->
+  <section class="section" id="layers">
+    <div class="wrap split">
+      <div class="split-head">
+        <p class="label">How it is built</p>
+        <h2 class="title">Three layers, locked in register.</h2>
+        <p class="measure">You already think in layers. Tally keeps the parts of an invoice apart, so changing one never disturbs the others.</p>
+      </div>
+      <ol class="layers">
+        <li>
+          <p class="layers-name">Letterhead</p>
+          <p>Set it once. Your studio name, your typefaces, your bank details and your terms. Upload the fonts you own as OTF or WOFF2 and Tally sets the whole sheet in them, so the invoice looks like the rest of the project.</p>
+        </li>
+        <li>
+          <p class="layers-name">Line items</p>
+          <p>Bill by the hour, by the day or by a fixed fee, and mix all three on one sheet. Revision rounds beyond the ones you quoted become their own line, with the round number on it.</p>
+        </li>
+        <li>
+          <p class="layers-name">Total</p>
+          <p>VAT, deposits already paid and the amount due. The client pays by card or bank transfer from the invoice itself. When the money arrives, Tally stamps the sheet and sends both of you a copy.</p>
+        </li>
+      </ol>
     </div>
-
-    <ol class="sheets">
-      <li class="sheets__row">
-        <span class="swatch swatch--top" aria-hidden="true"></span>
-        <div>
-          <h3 class="lead strong">Top copy <span class="muted regular">goes to the client</span></h3>
-          <p class="measure">A clean page with your logo, the job, and a way to pay. Clients pay by card or bank transfer without creating an account.</p>
-        </div>
-      </li>
-      <li class="sheets__row">
-        <span class="swatch swatch--carbon" aria-hidden="true"></span>
-        <div>
-          <h3 class="lead strong">Carbon copy <span class="muted regular">stays with you</span></h3>
-          <p class="measure">An exact duplicate, locked the moment you send. If a client disputes the third revision round six months later, you have the page they agreed to, with the date they opened it. You can correct an invoice, but the correction is a new sheet. The old one stays in the pad.</p>
-        </div>
-      </li>
-      <li class="sheets__row">
-        <span class="swatch swatch--ledger" aria-hidden="true"></span>
-        <div>
-          <h3 class="lead strong">Ledger sheet <span class="muted regular">goes to your books</span></h3>
-          <p class="measure">Every invoice posts to a running ledger: what is owed, what is late, what has been paid. Export it as a CSV for your accountant at the end of the quarter.</p>
-        </div>
-      </li>
-    </ol>
   </section>
 
-  <!-- The top copy, flat and readable -->
-  <section class="section wrap" id="top-copy">
-    <div class="section__head">
-      <h2 class="title">The top copy, laid flat</h2>
-      <p class="measure">This is the sheet from the top of the page. It is yours to change: remove a line, add your own work, stamp it.</p>
-    </div>
+  <!-- Sample invoice -->
+  <section class="section" id="sample">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">The same invoice, flattened</p>
+        <h2 class="title">Read every line. Then change one.</h2>
+        <p class="measure">This is the sheet from the top of the page, laid flat. Remove a line or add your own and the total follows.</p>
+      </div>
 
-    <div class="flat">
-      <article class="invoice" aria-labelledby="inv-title">
-        <p class="invoice__stub"><span>Tally</span><span>No. 0047</span></p>
+      <div class="sample-grid">
+        <article class="sheet crop" aria-labelledby="sheet-title">
+          <span class="crop-mark crop-tl" aria-hidden="true"></span>
+          <span class="crop-mark crop-tr" aria-hidden="true"></span>
+          <span class="crop-mark crop-bl" aria-hidden="true"></span>
+          <span class="crop-mark crop-br" aria-hidden="true"></span>
 
-        <div class="invoice__head">
-          <h3 class="title" id="inv-title">Invoice</h3>
-          <dl class="invoice__meta">
-            <div><dt>From</dt><dd>Oyelaran Studio, Portland</dd></div>
-            <div><dt>To</dt><dd>Fennel &amp; Rye Bakery</dd></div>
-            <div><dt>Issued</dt><dd>15 Sep 2026</dd></div>
-            <div><dt>Due</dt><dd>29 Sep 2026, net 14</dd></div>
+          <header class="sheet-head">
+            <div>
+              <h3 class="lead-strong" id="sheet-title">Okafor Studio</h3>
+              <p class="muted">Brand and packaging design, Bristol</p>
+            </div>
+            <p class="sheet-no">Invoice 0042</p>
+          </header>
+
+          <dl class="sheet-meta">
+            <div><dt>Billed to</dt><dd>Fernhill Coffee Roasters</dd></div>
+            <div><dt>Issued</dt><dd>14 Sep 2026</dd></div>
+            <div><dt>Due</dt><dd>14 Oct 2026</dd></div>
           </dl>
-        </div>
 
-        <div class="table-scroll" id="lines-wrap">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Work</th>
-                <th scope="col" class="num">Qty</th>
-                <th scope="col" class="num">Rate</th>
-                <th scope="col" class="num">Amount</th>
-                <th scope="col" class="js-only"><span class="visually-hidden">Remove</span></th>
-              </tr>
-            </thead>
-            <tbody id="lines">
-              <tr><td>Brand identity: logo suite and colour system</td><td class="num">1</td><td class="num">3,200.00</td><td class="num">3,200.00</td><td class="js-only"></td></tr>
-              <tr><td>Packaging illustration for bread bags, hours</td><td class="num">14</td><td class="num">95.00</td><td class="num">1,330.00</td><td class="js-only"></td></tr>
-              <tr><td>Revision round 3 (two rounds are included)</td><td class="num">1</td><td class="num">280.00</td><td class="num">280.00</td><td class="js-only"></td></tr>
-              <tr><td>Usage licence: exclusive, two years, print and web</td><td class="num">1</td><td class="num">600.00</td><td class="num">600.00</td><td class="js-only"></td></tr>
-            </tbody>
-          </table>
-        </div>
+          <div class="table-scroll" role="region" aria-label="Line items" tabindex="0">
+            <table class="lines">
+              <thead>
+                <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col" class="num">Quantity</th>
+                  <th scope="col" class="num">Rate</th>
+                  <th scope="col" class="num">Amount</th>
+                  <th scope="col" class="act js-only"><span class="sr-only">Remove</span></th>
+                </tr>
+              </thead>
+              <tbody id="lines-body">
+                <tr><th scope="row">Brand identity: discovery and strategy</th><td class="num">12 h</td><td class="num">£85.00</td><td class="num">£1,020.00</td></tr>
+                <tr><th scope="row">Logo suite and wordmark, fixed fee</th><td class="num">1</td><td class="num">£2,400.00</td><td class="num">£2,400.00</td></tr>
+                <tr><th scope="row">Packaging: 250g bag, three origins</th><td class="num">18 h</td><td class="num">£85.00</td><td class="num">£1,530.00</td></tr>
+                <tr><th scope="row">Revisions, round two</th><td class="num">4 h</td><td class="num">£85.00</td><td class="num">£340.00</td></tr>
+              </tbody>
+            </table>
+          </div>
 
-        <div class="empty" id="lines-empty" hidden>
-          <p>This invoice has no lines. Each piece of work you bill appears here with its quantity and rate.</p>
-          <button class="btn btn--secondary" type="button" id="empty-add">Add the first line</button>
-        </div>
+          <div class="empty" id="lines-empty" hidden>
+            <p>No line items yet. Work you add appears here as a line, with its amount.</p>
+            <p>Fill in the three fields under “Add a line” to bill for something.</p>
+            <button class="btn btn-secondary" type="button" id="empty-add">Add a line item</button>
+          </div>
 
-        <dl class="totals" id="totals">
-          <div><dt>Subtotal</dt><dd id="t-sub">5,410.00</dd></div>
-          <div><dt>Deposit received 12 Aug</dt><dd>&minus;1,600.00</dd></div>
-          <div class="totals__due"><dt id="t-due-label">Amount due</dt><dd id="t-due">$3,810.00</dd></div>
-        </dl>
+          <div class="sheet-foot">
+            <div class="sheet-status">
+              <p class="stamp-flat" id="flat-stamp">Paid</p>
+              <p class="muted" id="flat-status">Paid by bank transfer on 26 Sep 2026.</p>
+            </div>
+            <dl class="totals">
+              <div><dt>Subtotal</dt><dd id="t-sub">£5,290.00</dd></div>
+              <div><dt>VAT at 20%</dt><dd id="t-vat">£1,058.00</dd></div>
+              <div class="totals-due"><dt>Total due</dt><dd class="total-figure" id="t-due">£6,348.00</dd></div>
+            </dl>
+          </div>
+        </article>
 
-        <div class="stamp stamp--flat" id="flat-stamp" hidden><span class="stamp__word">Paid</span><span class="stamp__date">26 Sep 2026</span></div>
-      </article>
-
-      <div class="bench js-only">
-        <form class="form" id="line-form" novalidate>
-          <h3 class="lead strong">Add a line</h3>
+        <form class="add js-only" id="add-form" novalidate>
+          <h3 class="lead-strong">Add a line</h3>
           <div class="field">
-            <label for="f-desc">Work</label>
+            <label for="f-desc">Description</label>
             <input id="f-desc" name="desc" type="text" autocomplete="off" aria-describedby="f-desc-help">
-            <p class="help" id="f-desc-help">What you did, as the client would name it.</p>
+            <p class="help" id="f-desc-help">What the client is paying for.</p>
           </div>
           <div class="field-row">
             <div class="field">
-              <label for="f-qty">Quantity</label>
+              <label for="f-qty">Hours or quantity</label>
               <input id="f-qty" name="qty" type="text" inputmode="decimal" autocomplete="off" aria-describedby="f-qty-help">
-              <p class="help" id="f-qty-help">Hours or units.</p>
+              <p class="help" id="f-qty-help">Use 1 for a fixed fee.</p>
             </div>
             <div class="field">
-              <label for="f-rate">Rate, in dollars</label>
+              <label for="f-rate">Rate in pounds</label>
               <input id="f-rate" name="rate" type="text" inputmode="decimal" autocomplete="off" aria-describedby="f-rate-help">
-              <p class="help" id="f-rate-help">For each hour or unit.</p>
+              <p class="help" id="f-rate-help">Before VAT.</p>
             </div>
           </div>
-          <div class="actions">
-            <button class="btn btn--secondary" type="submit">Add line</button>
-            <button class="btn btn--quiet" type="button" id="stamp-toggle" aria-pressed="false">Stamp it paid</button>
-          </div>
+          <button class="btn btn-secondary" type="submit">Add line to invoice</button>
+          <p class="muted" role="status" id="add-status"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Small print -->
-  <section class="section wrap" id="small-print">
-    <div class="section__head">
-      <h2 class="title">The small print, in your favour</h2>
-      <p class="measure">Design work has terms that a generic invoice template leaves out. Tally prints them on the sheet, so the awkward conversation happens before the job and not after.</p>
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="wrap split">
+      <div class="split-head">
+        <p class="label">Pricing</p>
+        <h2 class="title">Free until invoicing is a habit.</h2>
+        <p class="measure">Tally never takes a share of what you are paid. Card payments carry the card processor’s fee. Bank transfers cost nothing.</p>
+      </div>
+      <div class="table-scroll" role="region" aria-label="Plans" tabindex="0">
+        <table class="plans">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">What you get</span></th>
+              <th scope="col">Solo<span class="plan-price">Free</span></th>
+              <th scope="col">Studio<span class="plan-price">£9 a month</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Invoices each month</th><td>3</td><td>No limit</td></tr>
+            <tr><th scope="row">Clients</th><td>No limit</td><td>No limit</td></tr>
+            <tr><th scope="row">Your own typefaces</th><td>Not included</td><td>Up to 4 font files</td></tr>
+            <tr><th scope="row">Late payment reminders</th><td>You send them</td><td>Sent on days 3, 7 and 14, in your words</td></tr>
+            <tr><th scope="row">Deposits and milestones</th><td>Not included</td><td>Split any invoice into stages</td></tr>
+            <tr><th scope="row">Footer on the PDF</th><td>“Made with Tally”</td><td>Yours</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <ol class="terms">
-      <li>
-        <h3 class="lead strong">Deposits</h3>
-        <p>Ask for 30% or 50% before you open a file. Tally takes it off the final invoice and shows the client the sum.</p>
-      </li>
-      <li>
-        <h3 class="lead strong">Revision rounds</h3>
-        <p>Set how many rounds the fee includes. Round three and beyond become a line on the invoice, priced in advance. The client sees the count on every proof you send, so the extra line is never a surprise.</p>
-      </li>
-      <li>
-        <h3 class="lead strong">Usage licences</h3>
-        <p>Bill the licence apart from the labour: exclusive or not, for how long, in which media. The terms print under the line.</p>
-      </li>
-      <li>
-        <h3 class="lead strong">Late fees</h3>
-        <p>Net 14 means 14. On day 15 Tally adds the fee you set and sends a reminder in words you wrote, not a collection agency's.</p>
-      </li>
-      <li>
-        <h3 class="lead strong">Kill fees</h3>
-        <p>If the project is cancelled, bill the work done to date at the percentage in your contract.</p>
-      </li>
-    </ol>
   </section>
 
-  <!-- Pricing -->
-  <section class="section wrap" id="pricing">
-    <div class="section__head">
-      <h2 class="title">Two pads</h2>
-      <p class="measure">Start on the scratch pad. Move to the studio pad when you send a fourth invoice in a month.</p>
+  <!-- Questions -->
+  <section class="section" id="questions">
+    <div class="wrap split">
+      <div class="split-head">
+        <p class="label">Questions</p>
+        <h2 class="title">Asked before signing up.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Can I design the invoice myself?</summary>
+          <p>Yes, within a grid. You choose the typefaces, the paper colour, the position of your mark and the column widths. Tally keeps the amounts aligned and the legal details present, so a layout change cannot lose the VAT number.</p>
+        </details>
+        <details>
+          <summary>What happens when a client pays late?</summary>
+          <p>On the Studio plan Tally sends a reminder 3, 7 and 14 days after the due date. You write the wording once. On the Solo plan the invoice is marked overdue and you decide when to chase.</p>
+        </details>
+        <details>
+          <summary>Can I bill in a currency other than pounds?</summary>
+          <p>Yes. Each client has a currency, and each invoice is issued in it. Your reports convert to your home currency at the rate on the day the invoice was paid.</p>
+        </details>
+        <details>
+          <summary>Can I get my invoices out again?</summary>
+          <p>Every invoice exports as a PDF and every year as a CSV file your accountant can open. If you close your account, the export stays available for 90 days.</p>
+        </details>
+      </div>
     </div>
-
-    <div class="table-scroll">
-      <table class="table table--pricing">
-        <thead>
-          <tr>
-            <th scope="col">Pad</th>
-            <th scope="col">What is in it</th>
-            <th scope="col" class="num">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Scratch pad</th>
-            <td>Three invoices a month, all three sheets, card and bank payments.</td>
-            <td class="num">$0</td>
-          </tr>
-          <tr>
-            <th scope="row">Studio pad</th>
-            <td>Unlimited invoices, deposits, revision rounds, licences, late fees, reminders, and the ledger export.</td>
-            <td class="num">$9 a month</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="caption muted measure">Card payments cost 2.9% plus 30 cents, charged by the payment processor. Bank transfers cost nothing.</p>
   </section>
 
   <!-- Start -->
-  <section class="section wrap" id="start">
-    <div class="start">
-      <div class="section__head">
-        <h2 class="title">Get your pad</h2>
-        <p class="measure">Enter your email and we send a sign-in link. Your first invoice is No. 0001. If you would rather look first, <a href="#top-copy">read the sample invoice</a>.</p>
-      </div>
-
-      <form class="form form--panel" id="start-form" novalidate>
-        <div class="field">
-          <label for="f-email">Work email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="f-email-help">
-          <p class="help" id="f-email-help">We send one email: your sign-in link.</p>
+  <section class="section" id="start">
+    <div class="wrap">
+      <div class="start crop">
+        <span class="crop-mark crop-tl" aria-hidden="true"></span>
+        <span class="crop-mark crop-tr" aria-hidden="true"></span>
+        <span class="crop-mark crop-bl" aria-hidden="true"></span>
+        <span class="crop-mark crop-br" aria-hidden="true"></span>
+        <div class="start-copy">
+          <h2 class="title">The project is finished. Send the last file.</h2>
+          <p class="measure">Create an account with your email address. Your first three invoices each month are free, and there is no card to enter.</p>
         </div>
-        <button class="btn btn--primary btn--large" type="submit" id="start-submit"><span class="spinner" hidden></span><span>Send my sign-in link</span></button>
-      </form>
-
-      <div class="form--panel confirm" id="start-done" role="status" tabindex="-1" hidden>
-        <h3 class="lead strong">Link sent</h3>
-        <p id="start-done-text"></p>
+        <form class="start-form" id="start-form" novalidate>
+          <div class="field">
+            <label for="f-email">Email address</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="f-email-help">
+            <p class="help" id="f-email-help">We send a sign-in link. There is no password to set.</p>
+          </div>
+          <button class="btn btn-primary btn-large" type="submit">Create my account</button>
+          <p class="start-done" role="status" id="start-status"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -330,12 +316,16 @@
 </main>
 
 <footer class="footer">
-  <div class="wrap footer__row">
-    <p class="caption muted">Tally. Invoicing for freelance designers.</p>
-    <p class="caption muted">Questions: <a href="mailto:hello@tally.example">hello@tally.example</a></p>
+  <div class="wrap footer-row">
+    <p class="wordmark">Tally</p>
+    <p class="muted">Invoicing for freelance designers. Made in Bristol.</p>
+    <ul class="footer-list">
+      <li><a class="link" href="#pricing">Pricing</a></li>
+      <li><a class="link" href="#questions">Questions</a></li>
+      <li><a class="link" href="mailto:hello@tally.example">hello@tally.example</a></li>
+    </ul>
   </div>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>

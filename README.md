@@ -71,7 +71,7 @@ I ran four prompts with no skills and with the kit. These are the results, one r
 | Match a mockup | ![Mockup match without the kit](examples/screenshots/3-screenshot-without-kit.png) | ![Mockup match with the kit](examples/screenshots/3-screenshot-with-kit.png) |
 | Landing page with 3D | ![Animated page without the kit](examples/screenshots/4-animated-without-kit.gif) | ![Animated page with the kit](examples/screenshots/4-animated-with-kit.gif) |
 
-The pages without the kit are not ugly. In the first row the page without the kit is the better looking one, which is why the `showcase` variant and the `motion` skill exist: the last row uses them. Even there, the kit's first attempt was too timid and I had to revise the skill. What the kit changes reliably shows up when you count:
+The pages without the kit are not ugly. In the first row the page without the kit is the better looking one, which is why the `showcase` variant and the `motion` skill exist: the last row uses them. Even there it took three attempts: the first was too timid, the second had a bug in the animation, and I revised the skill after each. What the kit changes reliably shows up when you count:
 
 | Measure | Without | With |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ The pages without the kit are not ugly. In the first row the page without the ki
 | Mockup match: pixels that differ from the source, of 5,184,000 | 4,379,452 | 3 |
 | Mockup match: differences from the source listed in the output | 3 | 18 |
 | 3D page: font sizes | 22 | 5 |
-| 3D page: reduced-motion rules | 2 | 7 |
+| 3D page: reduced-motion rules | 2 | 9 |
 
 The code for every run is in `examples/runs/`, with the reply each run gave. `examples/before-after.md` has the full account, including what the kit got wrong.
 
