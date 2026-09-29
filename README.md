@@ -59,7 +59,28 @@ Review src/components against the web design guidelines, then fix only what fail
 
 The agent reports which variant it used, what the accent colour marks, and whether its output passed the smell test. If that report is missing, the skill did not load.
 
-`examples/before-after.md` walks through three prompts with and without the kit.
+## What it produces
+
+I ran three prompts twice each, once with no skills and once with the kit. These are the results, one run per cell, top of each page.
+
+| Prompt | Without the kit | With the kit |
+| --- | --- | --- |
+| Landing page | ![Landing page without the kit](examples/screenshots/1-landing-page-without-kit.png) | ![Landing page with the kit](examples/screenshots/1-landing-page-with-kit.png) |
+| Orders table | ![Orders table without the kit](examples/screenshots/2-orders-table-without-kit.png) | ![Orders table with the kit](examples/screenshots/2-orders-table-with-kit.png) |
+| Match a mockup | ![Mockup match without the kit](examples/screenshots/3-screenshot-without-kit.png) | ![Mockup match with the kit](examples/screenshots/3-screenshot-with-kit.png) |
+
+The pages without the kit are not ugly. The first one is arguably the bolder design. What the kit changes shows up when you count:
+
+| Measure | Without | With |
+| --- | --- | --- |
+| Landing page: font sizes | 17 | 5 |
+| Landing page: spacing values off the 4px grid | 11 | 0 |
+| Landing page: shadows, gradients and blurs | 14 | 0 |
+| Orders table: states built (loading, empty, no matches, failed) | 1 of 4 | 4 of 4 |
+| Mockup match: pixels that differ from the source, of 5,184,000 | 4,379,452 | 3 |
+| Mockup match: differences from the source listed in the output | 3 | 18 |
+
+The code for all six is in `examples/runs/`, with the reply each run gave. `examples/before-after.md` has the full account, including what the kit runs got wrong and the bug they found in the kit.
 
 ## Skills
 

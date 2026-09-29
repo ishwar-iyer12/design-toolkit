@@ -1,0 +1,119 @@
+/* Tokens for this page: base values from the design kit, then the dashboard
+   variant's overrides. Copied from design-systems/base/tokens.json and
+   design-systems/dashboard/tokens.json. Keep in step with the kit. */
+
+:root {
+  /* color neutral */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafaf9;
+  --color-neutral-100: #f4f4f2;
+  --color-neutral-200: #e6e5e2;
+  --color-neutral-300: #d2d1cc;
+  --color-neutral-400: #a3a29c;
+  --color-neutral-500: #76756f;
+  --color-neutral-600: #5c5b56;
+  --color-neutral-700: #43423e;
+  --color-neutral-800: #2a2a27;
+  --color-neutral-900: #1a1a18;
+  --color-neutral-950: #0e0e0d;
+
+  /* color accent */
+  --color-accent-50: #eef4fb;
+  --color-accent-500: #2f69ad;
+  --color-accent-600: #22548f;
+  --color-accent-700: #1c4473;
+  --color-accent-800: #17375c;
+
+  /* color status */
+  --color-danger-100: #fbe4e1;
+  --color-danger-600: #b3261e;
+  --color-danger-700: #8c1d18;
+  --color-warning-100: #fdf0d5;
+  --color-warning-600: #8a5a00;
+  --color-warning-700: #6b4500;
+  --color-success-100: #dff3e4;
+  --color-success-600: #1e7a3c;
+  --color-success-700: #175e2e;
+
+  /* color role */
+  --color-role-page: var(--color-neutral-0);
+  --color-role-surface: var(--color-neutral-50);
+  --color-role-surface-sunken: var(--color-neutral-100);
+  --color-role-border: var(--color-neutral-200);
+  --color-role-border-strong: var(--color-neutral-500);
+  --color-role-text: var(--color-neutral-900);
+  --color-role-text-muted: var(--color-neutral-600);
+  --color-role-text-disabled: var(--color-neutral-400);
+  --color-role-text-on-accent: var(--color-neutral-0);
+  --color-role-accent: var(--color-accent-600);
+  --color-role-accent-hover: var(--color-accent-700);
+  --color-role-accent-pressed: var(--color-accent-800);
+  --color-role-focus-ring: var(--color-accent-500);
+
+  /* font */
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 650;
+
+  /* font size and line-height: dashboard overrides */
+  --font-size-caption: 11px;
+  --font-size-body: 13px;
+  --font-size-lead: 15px;
+  --font-size-title: 18px;
+  --font-size-display: 28px;
+  --font-line-height-caption: 16px;
+  --font-line-height-body: 20px;
+  --font-line-height-lead: 20px;
+  --font-line-height-title: 24px;
+  --font-line-height-display: 32px;
+  --font-numeric: tabular-nums lining-nums;
+
+  /* space */
+  --space-hair: 4px;
+  --space-tight: 8px;
+  --space-snug: 12px;
+  --space-base: 16px;
+  --space-roomy: 24px;
+  --space-wide: 32px;
+  --space-section: 48px;
+  --space-block: 64px;
+  --space-page: 96px;
+
+  /* radius: dashboard overrides medium and large */
+  --radius-none: 0px;
+  --radius-small: 2px;
+  --radius-medium: 4px;
+  --radius-large: 6px;
+
+  /* shadow: floating layers only */
+  --shadow-popover: 0 4px 12px rgba(14, 14, 13, 0.12);
+
+  /* motion */
+  --motion-duration-fast: 100ms;
+  --motion-duration-base: 160ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* size: dashboard overrides */
+  --size-control-small: 24px;
+  --size-control-medium: 28px;
+  --size-control-large: 32px;
+  --size-hit-target-min: 24px;
+  --size-focus-ring-width: 2px;
+  --size-focus-ring-offset: 2px;
+  --size-nav-height: 56px;
+
+  /* table: dashboard */
+  --table-row-height-compact: 28px;
+  --table-row-height-default: 32px;
+  --table-row-height-relaxed: 40px;
+  --table-cell-padding-x: 8px;
+  --table-header-height: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+  }
+}

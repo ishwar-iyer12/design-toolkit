@@ -1,0 +1,115 @@
+/*
+  Tokens for the Tally landing page.
+  Source: design-systems/base/tokens.json, overridden by design-systems/marketing/tokens.json.
+  Only the tokens this page uses are listed. Keep the names in step with the kit.
+*/
+:root {
+  /* color neutral (base) */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafaf9;
+  --color-neutral-100: #f4f4f2;
+  --color-neutral-200: #e6e5e2;
+  --color-neutral-400: #a3a29c;
+  --color-neutral-500: #76756f;
+  --color-neutral-600: #5c5b56;
+  --color-neutral-700: #43423e;
+  --color-neutral-900: #1a1a18;
+
+  /* color accent (marketing) */
+  --color-accent-600: #b93a0a;
+  --color-accent-700: #962f08;
+  --color-accent-800: #742406;
+
+  /* color status (base) */
+  --color-danger-600: #b3261e;
+  --color-warning-100: #fdf0d5;
+  --color-warning-700: #6b4500;
+
+  /* color role */
+  --color-role-page: var(--color-neutral-0);
+  --color-role-surface: var(--color-neutral-50);
+  --color-role-surface-sunken: var(--color-neutral-100);
+  --color-role-border: var(--color-neutral-200);
+  --color-role-border-strong: var(--color-neutral-500);
+  --color-role-text: var(--color-neutral-900);
+  --color-role-text-muted: var(--color-neutral-600);
+  --color-role-text-disabled: var(--color-neutral-400);
+  --color-role-text-on-accent: var(--color-neutral-0);
+  --color-role-accent: var(--color-accent-600);
+  --color-role-accent-hover: var(--color-accent-700);
+  --color-role-accent-pressed: var(--color-accent-800);
+  --color-role-focus-ring: var(--color-accent-600);
+
+  /* font family (base) */
+  --font-family-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* font size (marketing) */
+  --font-size-caption: 14px;
+  --font-size-body: 18px;
+  --font-size-lead: 22px;
+  --font-size-title: 36px;
+  --font-size-display: 64px;
+  --font-size-display-small-screen: 40px;
+
+  /* font line-height (marketing) */
+  --font-line-height-caption: 20px;
+  --font-line-height-body: 28px;
+  --font-line-height-lead: 32px;
+  --font-line-height-title: 44px;
+  --font-line-height-display: 68px;
+
+  /* font letter-spacing (marketing) */
+  --font-letter-spacing-display: -0.02em;
+  --font-letter-spacing-title: -0.01em;
+
+  /* font weight (base) */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 650;
+
+  /* space (base) */
+  --space-hair: 4px;
+  --space-tight: 8px;
+  --space-snug: 12px;
+  --space-base: 16px;
+  --space-roomy: 24px;
+  --space-wide: 32px;
+  --space-section: 48px;
+  --space-block: 64px;
+  --space-page: 96px;
+
+  /* section rhythm (marketing) */
+  --section-gap: 96px;
+  --section-gap-small-screen: 64px;
+  --section-gap-after-hero: 128px;
+  --section-heading-to-body: 16px;
+  --section-body-to-action: 32px;
+
+  /* radius (base) */
+  --radius-medium: 6px;
+  --radius-large: 10px;
+
+  /* motion (base) */
+  --motion-duration-fast: 100ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* size (marketing over base) */
+  --size-control-medium: 44px;
+  --size-control-large: 52px;
+  --size-hit-target-min: 44px;
+  --size-focus-ring-width: 2px;
+  --size-focus-ring-offset: 2px;
+  --size-content-max: 1120px;
+  --size-measure: 60ch;
+
+  /* from base/components.md: top bar height, table row height, empty state width */
+  --size-nav-height: 56px;
+  --size-table-row: 44px;
+  --size-empty-state-measure: 48ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+  }
+}

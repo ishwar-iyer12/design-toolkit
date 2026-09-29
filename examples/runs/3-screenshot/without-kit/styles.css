@@ -1,0 +1,292 @@
+:root {
+  --page: #f5f2eb;
+  --sidebar: #ebe6db;
+  --sidebar-rule: #ddd7c9;
+  --nav-active: #f8f5ee;
+  --field: #fdfcf8;
+  --field-rule: #b9b3a4;
+  --avatar: #d6cfbe;
+  --ink: #24221d;
+  --ink-muted: #6f6a5e;
+  --green: #2d6a4f;
+  --green-dark: #24573f;
+
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+  background: var(--sidebar);
+  border-right: 1px solid var(--sidebar-rule);
+  padding: 27px 20px 32px;
+}
+
+.brand {
+  display: inline-block;
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 35px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-left: 3px solid transparent;
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.nav a[aria-current="page"] {
+  background: var(--nav-active);
+  border-left-color: var(--green);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* Main */
+
+.main {
+  padding: 42px 72px 72px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.page-header p {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  margin-top: 35px;
+  border-radius: 50%;
+  background: var(--avatar);
+}
+
+/* Form */
+
+.settings {
+  max-width: 640px;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.settings fieldset {
+  margin-top: 22px;
+}
+
+.settings legend {
+  margin-bottom: 2px;
+}
+
+.settings fieldset + fieldset {
+  margin-top: 46px;
+}
+
+legend {
+  padding: 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  margin-top: 13px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--field-rule);
+  border-radius: 3px;
+  background-color: var(--field);
+  color: var(--ink);
+  font: inherit;
+}
+
+select {
+  appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%236f6a5e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+input:hover,
+select:hover {
+  border-color: #958f80;
+}
+
+input:focus-visible,
+select:focus-visible {
+  border-color: var(--green);
+  outline: 2px solid var(--green);
+  outline-offset: -1px;
+}
+
+/* Actions */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 44px;
+}
+
+button {
+  height: 38px;
+  border: 0;
+  border-radius: 3px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn-primary {
+  padding: 0 22px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: var(--green-dark);
+}
+
+.btn-quiet {
+  padding: 0 16px;
+  background: transparent;
+  color: var(--ink-muted);
+}
+
+.btn-quiet:hover {
+  color: var(--ink);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* Narrow screens: sidebar becomes a top bar */
+
+@media (max-width: 760px) {
+  .app {
+    display: block;
+  }
+
+  .sidebar {
+    padding: 16px 16px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--sidebar-rule);
+  }
+
+  .nav {
+    flex-direction: row;
+    gap: 0;
+    margin: 10px -16px 0;
+    padding: 0 8px;
+    overflow-x: auto;
+  }
+
+  .nav a {
+    flex: none;
+    min-height: 44px;
+    padding: 0 10px;
+    border-left: 0;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+
+  .nav a[aria-current="page"] {
+    background: transparent;
+    border-bottom-color: var(--green);
+  }
+
+  .main {
+    padding: 28px 16px 48px;
+  }
+
+  input,
+  select,
+  button {
+    height: 44px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .actions .btn-primary {
+    flex: 1;
+  }
+}

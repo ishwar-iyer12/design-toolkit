@@ -1,0 +1,348 @@
+/*
+DESIGN DIVERGENCE
+Source: settings-mockup.png (2880 x 1800 at 2x, so 1440 x 900 CSS px)
+Compared: rendered in Chrome at 1440 x 900, 2x, and differenced against the
+source pixel by pixel. 3 of 5,184,000 pixels differ (antialiasing inside
+two glyphs). Everything visible in the source is reproduced as drawn.
+Every row below is something the source does not show, or could not show.
+
+| Element                 | Source value              | Implemented value                        | Reason                                                        |
+| ----------------------- | ------------------------- | ---------------------------------------- | ------------------------------------------------------------- |
+| Typeface fallback       | Georgia                   | Georgia, "Times New Roman", serif        | Technical limit: Georgia is not installed everywhere; metrics |
+|                         |                           |                                          | shift on the fallback                                         |
+| Avatar                  | Flat 56px circle, #d6cfbe | Same circle, as a labelled placeholder   | Missing information: no photo, initials or icon in the source |
+|                         |                           | (role="img", aria-label)                 |                                                               |
+| Language, Time zone,    | Drawn as plain text boxes | input type="text"                        | Missing information: no chevron or menu shown, so not built   |
+| Week starts on          |                           |                                          | as selects; option lists are unknown                          |
+| Input hover             | Not shown                 | Border #8d8778                           | State not shown in source; added                              |
+| Input focus-visible     | Not shown                 | Border #2f6b4f, 2px outline, offset 1    | State not shown in source; added                              |
+| Input disabled          | Not shown                 | Opacity 0.5, not-allowed cursor          | State not shown in source; added                              |
+| Input error             | Not shown                 | Border and message in #a63a2b            | State not shown in source; added. #a63a2b is not in the       |
+|                         |                           | (aria-invalid, .field-error)             | source palette                                                |
+| Input placeholder/empty | Not shown                 | Placeholder text #6f6a5f                 | State not shown in source; added                              |
+| Save changes states     | Rest state only           | Hover #285c44, pressed #214d39,          | States not shown in source; added. Darker steps of #2f6b4f    |
+|                         |                           | focus outline 2px offset 2, disabled 0.5 |                                                               |
+| Cancel states           | Rest state only           | Hover text #22201c, pressed fill #ebe6da,| States not shown in source; added                             |
+|                         |                           | focus outline 2px offset 2               |                                                               |
+| Cancel element          | Text, no affordance       | button type="button", 12px side padding, | Missing information: a screenshot cannot show the element or  |
+|                         |                           | no behaviour attached                    | what Cancel does. Padding is invisible at rest                |
+| Nav and logo states     | Rest and current only     | Hover text #22201c, pressed fill #f6f3ec,| States not shown in source; added                             |
+|                         |                           | focus outline 2px offset 2               |                                                               |
+| Nav and logo links      | Destinations unknown      | href="#"                                 | Missing information                                           |
+| Form action             | Unknown                   | action="#", method="post"                | Missing information                                           |
+| Document title          | Not visible               | "Account settings - Fieldnote"           | Missing information: browser chrome is not in the image       |
+| Widths other than 1440  | Not shown                 | Sidebar fixed at 232px, form capped at   | No evidence for breakpoints, so none added. Below about 600px |
+|                         |                           | 640px and shrinks with the window        | wide the layout is unverified                                 |
+| Heights other than 900  | Not shown                 | Sidebar and page stretch to the window;  | Missing information                                           |
+|                         |                           | 78px below the buttons when scrolling    |                                                               |
+
+Checked and kept as drawn, not corrected:
+- Subtitle reads "imediately" in the source. Text reproduced exactly.
+- Subtitle #8d8778 on #f6f3ec is 3.23:1, below the 4.5:1 floor for text.
+- Nav text #6f6a5f on #ebe6da is 4.32:1, just below 4.5:1.
+- Input border #b9b19d on #f6f3ec is 1.93:1, below the 3:1 floor for controls.
+- Spacing values are the measured ones and were not snapped to a grid.
+*/
+
+:root {
+  /* Palette, sampled from flat areas of settings-mockup.png */
+  --color-page: #f6f3ec;          /* main background, active nav item */
+  --color-sidebar: #ebe6da;       /* sidebar background */
+  --color-surface: #fffdf8;       /* input fill, button text */
+  --color-divider: #d6cfbe;       /* sidebar border, avatar placeholder */
+  --color-border: #b9b19d;        /* input border */
+  --color-text: #22201c;          /* headings, labels, values, active nav */
+  --color-text-muted: #6f6a5f;    /* nav, section labels, Cancel */
+  --color-text-subtle: #8d8778;   /* page subtitle */
+  --color-accent: #2f6b4f;        /* primary button, active nav bar */
+
+  /* Additions: not in the source, derived from the palette for states */
+  --color-accent-hover: #285c44;
+  --color-accent-pressed: #214d39;
+  --color-border-hover: #8d8778;
+  --color-error: #a63a2b;
+
+  /* Type */
+  --font-family: Georgia, "Times New Roman", serif;
+  --text-title: 26px;
+  --text-logo: 18px;
+  --text-body: 14px;
+  --text-eyebrow: 11px;
+
+  /* Spacing scale, measured. One-off measured offsets are written inline. */
+  --space-4: 4px;
+  --space-12: 12px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-44: 44px;
+  --space-72: 72px;
+
+  --radius: 3px;
+  --control-height: 38px;
+  --sidebar-width: 232px;
+  --form-width: 640px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--text-body);
+  line-height: 20px;
+}
+
+/* Sidebar ------------------------------------------------------------ */
+
+.sidebar {
+  flex: 0 0 var(--sidebar-width);
+  width: var(--sidebar-width);
+  padding: 26px var(--space-20) 0;
+  background: var(--color-sidebar);
+  border-right: 1px solid var(--color-divider);
+}
+
+.logo {
+  display: block;
+  margin: 0;
+  font-size: var(--text-logo);
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.nav {
+  margin-top: 34px;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  display: block;
+  height: 36px;
+  padding: 0 var(--space-12);
+  border-left: 3px solid transparent;
+  color: var(--color-text-muted);
+  line-height: 36px;
+  text-decoration: none;
+}
+
+.nav a[aria-current="page"] {
+  border-left-color: var(--color-accent);
+  background: var(--color-page);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* Main --------------------------------------------------------------- */
+
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 42px var(--space-72) 78px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.page-subtitle {
+  margin: 4px 0 0;
+  color: var(--color-text-subtle);
+  line-height: 20px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  margin-top: 36px;
+  border-radius: 50%;
+  background: var(--color-divider);
+}
+
+.settings-form {
+  max-width: var(--form-width);
+}
+
+.section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.section-label {
+  display: block;
+  padding: 0;
+  margin: 0 0 14px;
+  color: var(--color-text-muted);
+  font-size: var(--text-eyebrow);
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section--profile {
+  margin-top: 22px;
+}
+
+.section--preferences {
+  margin-top: 44px;
+}
+
+.field {
+  margin-top: var(--space-12);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+}
+
+.field-row .field,
+.section-label + .field,
+.section-label + .field-row .field {
+  margin-top: 0;
+}
+
+.field label {
+  display: block;
+  margin-bottom: var(--space-4);
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.field input {
+  display: block;
+  width: 100%;
+  height: var(--control-height);
+  padding: 2px var(--space-12) 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  line-height: 20px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-top: var(--space-44);
+}
+
+.button {
+  height: var(--control-height);
+  border: 0;
+  border-radius: var(--radius);
+  font: inherit;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.button--primary {
+  padding: 0 22px;
+  background: var(--color-accent);
+  color: var(--color-surface);
+  font-weight: 700;
+}
+
+.button--quiet {
+  padding: 0 var(--space-12);
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+/* States: none of these are shown in the source. All are additions. --- */
+
+.logo:hover,
+.nav a:hover,
+.button--quiet:hover {
+  color: var(--color-text);
+}
+
+.nav a:active {
+  background: var(--color-page);
+}
+
+.field input:hover {
+  border-color: var(--color-border-hover);
+}
+
+.field input:focus-visible {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.logo:focus-visible,
+.nav a:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.button--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.button--primary:active {
+  background: var(--color-accent-pressed);
+}
+
+.button--quiet:active {
+  background: var(--color-sidebar);
+}
+
+.button:disabled,
+.field input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.field input[aria-invalid="true"]:focus-visible {
+  outline-color: var(--color-error);
+}
+
+.field input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.field-error {
+  margin: var(--space-4) 0 0;
+  color: var(--color-error);
+}
+
+.field-error[hidden] {
+  display: none;
+}

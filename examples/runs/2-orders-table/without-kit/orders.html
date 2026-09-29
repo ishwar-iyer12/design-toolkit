@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Orders · Admin</title>
+  <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to orders</a>
+
+  <div class="shell">
+    <!-- App chrome. Replace with the admin panel's own navigation if it has one. -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <span class="brand">Admin</span>
+        <button type="button" class="icon-btn nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">Menu</span>
+        </button>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="Admin">
+        <a href="#">Overview</a>
+        <a href="orders.html" aria-current="page">Orders</a>
+        <a href="#">Products</a>
+        <a href="#">Customers</a>
+        <a href="#">Discounts</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main" id="main" tabindex="-1">
+      <header class="page-head">
+        <div>
+          <h1>Orders</h1>
+          <p class="page-sub" id="page-sub"></p>
+        </div>
+        <button type="button" class="btn" id="export-btn">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 3v9m0 0l-3.5-3.5M10 12l3.5-3.5M4 15.5h12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export CSV
+        </button>
+      </header>
+
+      <nav class="tabs" id="tabs" aria-label="Filter by status"></nav>
+
+      <section class="panel" aria-label="Order list">
+        <div class="toolbar">
+          <div class="search">
+            <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="9" cy="9" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.2 13.2L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <label class="visually-hidden" for="search">Search orders</label>
+            <input type="search" id="search" placeholder="Order number, customer or email" autocomplete="off" spellcheck="false">
+          </div>
+          <label class="visually-hidden" for="range">Date range</label>
+          <select id="range" class="select">
+            <option value="all">Any time</option>
+            <option value="today">Today</option>
+            <option value="7d">Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table class="orders" id="orders-table">
+            <caption class="visually-hidden">Orders. Column headers with buttons can be sorted.</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="c-check">
+                  <input type="checkbox" id="select-all" aria-label="Select all orders on this page">
+                </th>
+                <th scope="col" class="c-order">Order</th>
+                <th scope="col" class="c-date" data-sort="date"><button type="button" class="sort-btn">Date<span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-customer" data-sort="customer"><button type="button" class="sort-btn">Customer<span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-items">Items</th>
+                <th scope="col" class="c-total num" data-sort="total"><button type="button" class="sort-btn">Total<span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-pay">Payment</th>
+                <th scope="col" class="c-ful">Fulfilment</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+
+          <div class="empty" id="empty" hidden>
+            <p class="empty-title">No orders match these filters</p>
+            <p class="empty-body">Try a different status, a wider date range, or a shorter search.</p>
+            <button type="button" class="btn" id="clear-filters">Clear filters</button>
+          </div>
+        </div>
+
+        <footer class="pager" id="pager">
+          <p class="pager-info" id="pager-info" aria-live="polite"></p>
+          <div class="pager-btns">
+            <button type="button" class="btn btn-quiet" id="prev-page">Previous</button>
+            <button type="button" class="btn btn-quiet" id="next-page">Next</button>
+          </div>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="bulk" id="bulk" role="region" aria-label="Bulk actions" hidden>
+    <span class="bulk-count" id="bulk-count"></span>
+    <button type="button" class="btn btn-invert" id="bulk-ship"></button>
+    <button type="button" class="btn btn-ghost-invert" id="bulk-export">Export CSV</button>
+    <button type="button" class="btn btn-ghost-invert" id="bulk-clear">Clear</button>
+  </div>
+
+  <dialog class="drawer" id="drawer" aria-labelledby="drawer-title">
+    <div id="drawer-body"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="orders.js"></script>
+</body>
+</html>

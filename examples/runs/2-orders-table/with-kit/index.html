@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orders - Fernhill Coffee Roasters admin</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <div class="app">
+    <header class="topbar">
+      <p class="brand">Fernhill Coffee Roasters <span class="brand-area">Admin</span></p>
+      <nav aria-label="Admin sections">
+        <ul class="nav-list">
+          <li><a class="nav-item" href="#/orders" aria-current="page">Orders</a></li>
+          <li><a class="nav-item" href="#/products">Products</a></li>
+          <li><a class="nav-item" href="#/customers">Customers</a></li>
+          <li><a class="nav-item" href="#/subscriptions">Subscriptions</a></li>
+          <li><a class="nav-item" href="#/discounts">Discounts</a></li>
+          <li><a class="nav-item" href="#/settings">Settings</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="content" class="main" tabindex="-1">
+      <div class="page-head">
+        <h1 class="page-title">Orders</h1>
+        <div class="page-actions">
+          <p class="hint" id="export-hint" hidden>No orders to export.</p>
+          <button type="button" class="button button-primary" id="export" aria-keyshortcuts="e" aria-describedby="export-hint">
+            Export CSV <kbd class="kbd kbd-on-accent">E</kbd>
+          </button>
+        </div>
+      </div>
+
+      <form class="toolbar" id="toolbar" role="search" aria-label="Filter orders">
+        <div class="field field-grow">
+          <label class="label" for="search">Search <kbd class="kbd">/</kbd></label>
+          <input class="input" id="search" type="search" autocomplete="off"
+                 placeholder="FH-10482 or a customer name" aria-keyshortcuts="/">
+        </div>
+        <div class="field">
+          <label class="label" for="status">Status</label>
+          <select class="input" id="status">
+            <option value="">All statuses</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="label" for="placed">Placed</label>
+          <select class="input" id="placed">
+            <option value="all">All time</option>
+            <option value="today">Today</option>
+            <option value="7">Last 7 days</option>
+            <option value="30">Last 30 days</option>
+          </select>
+        </div>
+        <div class="field" role="radiogroup" aria-labelledby="density-label">
+          <span class="label" id="density-label">Row height</span>
+          <div class="segmented">
+            <label class="segment"><input type="radio" name="density" value="compact"><span>Compact</span></label>
+            <label class="segment"><input type="radio" name="density" value="default" checked><span>Default</span></label>
+            <label class="segment"><input type="radio" name="density" value="relaxed"><span>Relaxed</span></label>
+          </div>
+        </div>
+        <button type="button" class="button button-quiet" id="clear" hidden>Clear filters</button>
+        <p class="count" id="count" role="status"></p>
+      </form>
+
+      <section class="panel" id="panel" aria-label="Orders">
+        <div class="message" id="message" hidden>
+          <h2 class="message-title" id="message-title"></h2>
+          <p class="message-body" id="message-body"></p>
+          <button type="button" class="button button-secondary" id="message-action"></button>
+        </div>
+
+        <div class="table-wrap" id="table-wrap">
+          <table class="table" id="table" data-density="default">
+            <caption class="visually-hidden">
+              Orders. Use the up and down arrow keys to move between rows, and Enter to open an order.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" data-key="number"><button type="button" class="sort">Order</button></th>
+                <th scope="col" data-key="customer"><button type="button" class="sort">Customer</button></th>
+                <th scope="col" data-key="placed"><button type="button" class="sort">Placed</button></th>
+                <th scope="col" data-key="items" class="num"><button type="button" class="sort">Items</button></th>
+                <th scope="col" data-key="total" class="num"><button type="button" class="sort">Total (USD)</button></th>
+                <th scope="col" data-key="status"><button type="button" class="sort">Status</button></th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+            <tfoot id="totals" hidden>
+              <tr>
+                <th scope="row">Total</th>
+                <td colspan="2" class="muted" id="total-count"></td>
+                <td class="num" id="total-items"></td>
+                <td class="num" id="total-amount"></td>
+                <td class="muted">n/a</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+
+  <script src="orders-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

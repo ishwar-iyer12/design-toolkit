@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account settings · Fieldnote</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#">Fieldnote</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#">Notebooks</a>
+        <a href="#">Shared with me</a>
+        <a href="#" aria-current="page">Settings</a>
+        <a href="#">Billing</a>
+        <a href="#">Help</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="page-header">
+        <h1>Account settings</h1>
+        <p>Changes apply to all your notebooks immediately.</p>
+      </header>
+
+      <div class="avatar" aria-hidden="true"></div>
+
+      <form class="settings" action="#" method="post">
+        <fieldset>
+          <legend>Profile</legend>
+
+          <div class="row">
+            <div class="field">
+              <label for="first-name">First name</label>
+              <input id="first-name" name="first-name" type="text" value="Meera" autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label for="last-name">Last name</label>
+              <input id="last-name" name="last-name" type="text" value="Varghese" autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" value="meera@fieldnote.example" autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="display-name">Display name</label>
+            <input id="display-name" name="display-name" type="text" value="Meera V." autocomplete="nickname">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences</legend>
+
+          <div class="field">
+            <label for="language">Language</label>
+            <select id="language" name="language">
+              <option selected>English (India)</option>
+              <option>English (UK)</option>
+              <option>English (US)</option>
+              <option>हिन्दी</option>
+              <option>മലയാളം</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="time-zone">Time zone</label>
+            <select id="time-zone" name="time-zone">
+              <option>America/New_York (UTC−05:00)</option>
+              <option>Europe/London (UTC+00:00)</option>
+              <option>Asia/Dubai (UTC+04:00)</option>
+              <option selected>Asia/Kolkata (UTC+05:30)</option>
+              <option>Asia/Singapore (UTC+08:00)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="week-start">Week starts on</label>
+            <select id="week-start" name="week-start">
+              <option selected>Monday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">Save changes</button>
+          <button class="btn-quiet" type="reset">Cancel</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
